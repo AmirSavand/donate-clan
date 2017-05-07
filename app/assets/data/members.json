@@ -7,13 +7,13 @@
 }, {
   "name": "Dante",
   "role": "member",
-  "rarity": "epic",
-  "donation": "a",
+  "rarity": "rare",
+  "donation": "b",
   "tags": ["whatsapp"]
 }, {
   "name": "FARA(CR7)",
   "role": "member",
-  "rarity": "epic",
+  "rarity": "rare",
   "donation": "b"
 }, {
   "name": "Miftahul_Amirin",
@@ -25,10 +25,10 @@
   "name": "CREW_GALAU",
   "role": "elder",
   "rarity": "epic",
-  "donation": "b"
+  "donation": "a"
 }, {
   "name": "CREW_GIRLY",
   "role": "member",
-  "rarity": "rare",
-  "donation": "b"
+  "rarity": "epic",
+  "donation": "a"
 }]
