@@ -1,9 +1,22 @@
 "use strict";
 
-var app = angular.module("donateClan", [
-  "ui.router",
-  "ui.bootstrap",
-  "angular.vertilize",
-  "ngDisqus",
-  "toaster"
+/**
+ * @name module
+ */
+var app = angular.module("royaleClan", [
+  "ui.router"
 ]);
+
+/**
+ * @name config
+ */
+app.config(function () {
+
+});
+
+/**
+ * @name run
+ */
+app.run(function () {
+
+});
