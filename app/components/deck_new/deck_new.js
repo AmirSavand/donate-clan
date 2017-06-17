@@ -106,7 +106,7 @@ app.controller("DeckNewController", function (Deck, Card, DeckList, toaster,
 
   angular.element($window).bind("resize", setSlots);
 
-  $scope.$on("donateClan.MainController:loadedCards", function (event, data) {
+  $scope.$on("royaleClan.MainController:loadedCards", function (event, data) {
     $scope.localCards = data;
     importLocalCards();
   });
