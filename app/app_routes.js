@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * @name config
+ * @desc App routes
+ */
 app.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state("app", {
