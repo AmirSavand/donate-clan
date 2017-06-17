@@ -1,6 +1,6 @@
 {
   "name": "royale-clan",
-  "version": "0.4.2",
+  "version": "1.0.0",
   "dependencies": {
     "angular": "^1.4.0",
     "angular-ui-router": "^0.4.2",
