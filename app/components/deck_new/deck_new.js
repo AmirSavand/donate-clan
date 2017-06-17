@@ -3,40 +3,22 @@
 app.controller("DeckNewController", function (Deck, Card, DeckList, toaster,
   $scope, $state, $stateParams, $http, $window) {
 
-  function constructor() {
-
-    $scope.index = DeckList.get($stateParams.index) ? $stateParams.index : null;
-
-    $scope.preDeck = $stateParams.deck;
-
-    $scope.cards = [];
-
-    $scope.localCards = localStorage.cards ? JSON.parse(localStorage.cards) : [];
-
-    $scope.deck = new Deck("My New Deck", []);
-
-    $scope.slots = new Array(8);
-
-    $scope.orderBy = "elixirCost";
-
-    $scope.filters = [{
-      key: "elixirCost",
-      label: "Elixir"
-    }, {
-      key: "raritySort",
-      label: "Rarity"
-    }, {
-      key: "typeSort",
-      label: "Type"
-    }];
-
-    importLocalCards();
-
-    setSlots();
-  }
-
   function setSlots() {
     angular.element(".slots").width(angular.element(".slots + .row").width());
+  }
+
+  function syncDeckWithCards(cards) {
+    // Loop in the generated deck
+    angular.forEach(cards, function (data) {
+      // Loop in available cards
+      angular.forEach($scope.cards, function (card, i) {
+        // Find it in card collection
+        if (card.idName === data.idName) {
+          // Add it to the deck
+          $scope.deck.addCard($scope.cards[i]);
+        }
+      });
+    });
   }
 
   function setupViewingDeck() {
@@ -68,18 +50,36 @@ app.controller("DeckNewController", function (Deck, Card, DeckList, toaster,
     setupViewingDeck();
   }
 
-  function syncDeckWithCards(cards) {
-    // Loop in the generated deck
-    angular.forEach(cards, function (data) {
-      // Loop in available cards
-      angular.forEach($scope.cards, function (card, i) {
-        // Find it in card collection
-        if (card.idName === data.idName) {
-          // Add it to the deck
-          $scope.deck.addCard($scope.cards[i]);
-        }
-      });
-    });
+  function constructor() {
+
+    $scope.index = DeckList.get($stateParams.index) ? $stateParams.index : null;
+
+    $scope.preDeck = $stateParams.deck;
+
+    $scope.cards = [];
+
+    $scope.localCards = localStorage.cards ? JSON.parse(localStorage.cards) : [];
+
+    $scope.deck = new Deck("My New Deck", []);
+
+    $scope.slots = new Array(8);
+
+    $scope.orderBy = "elixirCost";
+
+    $scope.filters = [{
+      key: "elixirCost",
+      label: "Elixir"
+    }, {
+      key: "raritySort",
+      label: "Rarity"
+    }, {
+      key: "typeSort",
+      label: "Type"
+    }];
+
+    importLocalCards();
+
+    setSlots();
   }
 
   $scope.generateDeck = function () {

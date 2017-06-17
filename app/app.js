@@ -4,14 +4,16 @@
  * @name module
  */
 var app = angular.module("royaleClan", [
-  "ui.router"
+  "ui.router",
+  "toaster"
 ]);
 
 /**
  * @name config
  */
-app.config(function () {
-
+app.config(function ($qProvider, $locationProvider) {
+  $qProvider.errorOnUnhandledRejections(false);
+  $locationProvider.html5Mode(true);
 });
 
 /**

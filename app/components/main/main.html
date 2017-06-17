@@ -1,34 +1,22 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" ui-sref="app.home">Donate Clan <small>{{ version }}</small></a>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li ng-class="{active: state.includes('app.deck-list')}">
-          <a ui-sref="app.deck-list" class="t-bold">MY DECKS</a>
-        </li>
-        <li ng-class="{active: state.includes('app.deck-new') && !state.params.index}">
-          <a ui-sref="app.deck-new({index: null})" class="t-bold">BUILD</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li uib-tooltip="GitHub" tooltip-placement="bottom">
-          <a href="http://github.com/AmirSavand/royale-clan" target="_blank">
+    <a class="navbar-brand" ui-sref="app.home">Donate Clan <small>{{ version }}</small></a>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" ng-href="http://github.com/AmirSavand/royale-clan" target="_blank">
             <i class="fa fa-fw hidden-xs fa-github"></i>
-            <span class="visible-xs t-bold">GITHUB</span>
+            <span class="visible-xs t-bold">GitHub</span>
           </a>
         </li>
-        <li uib-tooltip="Contact (Feedback)" tooltip-placement="bottom">
-          <a href="mailto:amir@savandbros.com?Subject=Donate - Clan Website (Feedback)" target="_blank">
-            <i class="fa fa-fw hidden-xs fa-paper-plane"></i>
-            <span class="visible-xs t-bold">CONATCT</span>
+        <li class="nav-item">
+          <a class="nav-link" ng-href="mailto:amir@savandbros.com?Subject=Donate - Clan Website (Feedback)" target="_blank">
+            <i class="fa fa-fw hidden-xs paper-plane"></i>
+            <span class="visible-xs t-bold">Contact</span>
           </a>
         </li>
       </ul>

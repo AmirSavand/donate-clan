@@ -5,7 +5,7 @@
  * @desc App constants
  */
 app.constant("Constant", {
-  Scores: {
+  scores: {
     role: {
       leader: 350,
       coleader: 200,
@@ -27,7 +27,7 @@ app.constant("Constant", {
     },
     tag: 50
   },
-  Tags: {
+  tags: {
     "godlike": {
       font: "user-secret",
       sentence: "is the creator of clan."
@@ -45,7 +45,7 @@ app.constant("Constant", {
       sentence: "has joined the clan's WhatsApp group."
     }
   },
-  Sorts: {
+  sorts: {
     rarity: {
       Common: 0,
       Rare: 1,

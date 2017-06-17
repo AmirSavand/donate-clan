@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Member", function (Scores, Tag) {
+app.service("Member", function (Constant) {
   return function (name, role, rarity, donation, tags) {
     var self = this;
 
@@ -10,9 +10,9 @@ app.service("Member", function (Scores, Tag) {
     this.donation = donation;
     this.tags = [];
     this.score = (
-      Scores.role[this.role] +
-      Scores.donation[this.donation] +
-      Scores.rarity[this.rarity]
+      Constant.score.role[this.role] +
+      Constant.score.donation[this.donation] +
+      Constant.score.rarity[this.rarity]
     );
 
     this.hasTag = function (tag) {
@@ -22,7 +22,7 @@ app.service("Member", function (Scores, Tag) {
     function constructor() {
       angular.forEach(tags, function (tag) {
         self.tags.push(new Tag(tag));
-        self.score += Scores.tag;
+        self.score += Constant.Score.tag;
       });
     }
 

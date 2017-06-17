@@ -1,73 +1,8 @@
-<div class="container-fluid cover animated fadeIn">
-  <div class="container">
-    <h2>Donate <small>#2Y2C9RCJ</small><br></h2>
-    <br>
-    <h4>Welcome to the Donate clan website!</h4>
-    <h4>We got a list of awesome/loyal donators below.</h4>
-    <h4>Feel free to join our clan and whatsapp group.</h4>
-    <h4>But only if you are an awesome donator <i class="fa fa-smile-o"></i></h4>
-  </div>
-</div>
+<br>
 
 <div class="container">
-
-  <div class="row animated fadeIn">
-
-    <!-- Members -->
-    <div class="col-md-6">
-      <div class="panel panel-primary bg-no">
-        <div class="panel-heading">
-          <h3 class="panel-title">Members <i class="fa fa-users"></i></h3>
-        </div>
-        <div class="panel-body s-pad-no">
-          <div member
-            class="{{ member.rarity }}"
-            ui-sref="app.member({'name': member.name, member: member})"
-            ng-click="member.modal(member)"
-            ng-repeat="member in members | orderBy:'-score'">
-            <name>{{ member.name | underspace }}</name>
-            <score>{{ member.score }}</score><br>
-            <role>{{ member.role }}</role>
-            <tag ng-repeat="tag in member.tags track by $index" uib-tooltip="{{ tag.name }}">
-              <i class="fa fa-{{ tag.font }}"></i>
-            </tag>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <!-- Random deck -->
-      <div class="panel panel-primary bg-dark">
-        <div class="panel-heading">
-          <h3 class="panel-title">Random Deck <i class="fa fa-th-large"></i></h3>
-        </div>
-        <div class="panel-body">
-          <ng-include card
-            src="'components/card/card_include.html'"
-            ng-click="card.view()"
-            ng-repeat="card in deck.cards">
-          </ng-include>
-        </div>
-        <div class="panel-footer bg-dark">
-          <div class="row">
-            <div class="col-sm-10">
-              <button class="btn btn-block btn-warning btn-lg t-bold"
-                ng-disabled="generating"
-                ng-click="generateDeck()">
-                <i class="fa fa-fw fa-refresh"></i> NEXT RANDOM DECK
-              </button>
-            </div>
-            <div class="col-sm-2">
-              <a class="btn btn-block btn-success btn-lg t-bold"
-                ui-sref="app.deck-new({deck: deck})">
-                <i class="fa fa-fw fa-save"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  <div class="jumbotron">
+    <h1>Donate Clan</h1>
+    <p>Welcome to Donate clan <small>(#2Y2C9RCJ)</small></p>
   </div>
 </div>

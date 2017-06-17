@@ -3,22 +3,21 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Website for Clash Royale clan called Donate. Features: Build and Save decsk, View card info and members.">
   <meta name="keywords" content="Clash, Royale, Decks, Generate, Save, Build, Create, Clan, Donate, Website, Join">
   <meta name="author" content="Amir Mehdi Savand">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
 
   <title>Donate Clan</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png" />
 
   <!-- build:css(.) assets/styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
   <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css" />
   <!-- endbower -->
-  <link rel="stylesheet" href="bower_components/bootswatch/paper/bootstrap.css">
   <!-- endbuild -->
 
   <!-- build:css(app) assets/styles/main.css -->
@@ -27,7 +26,7 @@
   <!-- endbuild -->
 </head>
 
-<body ng-app="royaleClan" class="pattern">
+<body ng-app="royaleClan">
   <!--[if lte IE 8]>
   <p class="browsehappy">
     You are using an <strong>outdated</strong> browser.
@@ -44,10 +43,8 @@
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/tether/dist/js/tether.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/angular-disqus/angular-disqus.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="bower_components/angular-vertilize/angular-vertilize.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/AngularJS-Toaster/toaster.js"></script>
   <!-- endbower -->
@@ -56,9 +53,7 @@
   <!-- build:js(app) scripts/scripts.js -->
   <script src="app.js"></script>
   <script src="app_constant.js"></script>
-  <script src="app_config.js"></script>
   <script src="app_routes.js"></script>
-  <script src="app_run.js"></script>
 
   <script src="directives/onload_directive.js"></script>
 

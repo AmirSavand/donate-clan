@@ -6,15 +6,22 @@
     "angular-ui-router": "^1.0.4",
     "animate.css": "^3.5.2",
     "bootstrap": "v4.0.0-alpha.6",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "AngularJS-Toaster": "angularjs-toaster#^2.1.0"
   },
   "appPath": "app",
   "moduleName": "royaleClan",
   "overrides": {
-    "font-awesome": {
+    "bootstrap": {
       "main": [
-        "css/font-awesome.css"
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css"
       ]
     }
+  },
+  "font-awesome": {
+    "main": [
+      "css/font-awesome.css"
+    ]
   }
 }
