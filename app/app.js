@@ -25,4 +25,7 @@ app.config(function ($qProvider, $resourceProvider, $locationProvider) {
  */
 app.run(function () {
 
+  $rootScope.$on('$viewContentLoaded', function () {
+    $anchorScroll();
+  });
 });
