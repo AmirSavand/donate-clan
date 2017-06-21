@@ -7,7 +7,10 @@
     "animate.css": "^3.5.2",
     "bootstrap": "v4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
-    "AngularJS-Toaster": "angularjs-toaster#^2.1.0"
+    "AngularJS-Toaster": "angularjs-toaster#^2.1.0",
+    "ui.bootstrap": "^2.5.0",
+    "angular-bootstrap": "^2.5.0",
+    "angular-resource": "^1.6.4"
   },
   "appPath": "app",
   "moduleName": "royaleClan",
@@ -17,11 +20,11 @@
         "dist/js/bootstrap.js",
         "dist/css/bootstrap.css"
       ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
     }
-  },
-  "font-awesome": {
-    "main": [
-      "css/font-awesome.css"
-    ]
   }
 }
