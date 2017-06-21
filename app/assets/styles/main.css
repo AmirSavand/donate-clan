@@ -244,4 +244,41 @@ member role {
 }
 
 
+/* Member detail */
+
+.card-detail {
+    background: #292b2c;
+    color: #fff;
+    padding: 40px 0;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    border-top: 4px solid;
+    text-align: center;
+}
+
+.card-detail .fa {
+    border-color: #222;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.2em;
+    font-size: 4em;
+    transition: all 0.15s ease-in-out;
+}
+
+.card-detail:hover .fa {
+    text-shadow: 0 0 10px;
+}
+
+.card-detail h5 {
+    opacity: 0.5;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.card-detail h2 {
+    margin-bottom: -38px;
+    margin-top: 20px;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.2);
+    text-transform: capitalize;
 }
