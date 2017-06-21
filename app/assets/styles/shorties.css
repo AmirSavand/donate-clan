@@ -1,0 +1,62 @@
+/* Opacity */
+
+.o-fade {
+    opacity: 0.5;
+}
+
+.o-fade-soft {
+    opacity: 0.7;
+}
+
+
+/* Spaces */
+
+.s-mar-top {
+    margin-top: 50px;
+}
+
+.s-pad-top {
+    padding-top: 50px;
+}
+
+.s-mar-y {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.s-pad-y {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.s-mar-no {
+    margin: 0;
+}
+
+.s-pad-no {
+    padding: 0;
+}
+
+.s-mar-soft {
+    margin: 20px;
+}
+
+.s-pad-soft {
+    padding: 20px;
+}
+
+.s-mar-bottom-soft {
+    margin-bottom: 20px;
+}
+
+.s-pad-bottom-soft {
+    padding-bottom: 20px;
+}
+
+.s-mar-bottom {
+    margin-bottom: 50px;
+}
+
+.s-pad-bottom {
+    padding-bottom: 50px;
+}
