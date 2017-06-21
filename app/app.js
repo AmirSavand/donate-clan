@@ -1,7 +1,8 @@
 "use strict";
 
 /**
- * @name module
+ * @name app
+ * @desc Royale clan for Donate clan
  */
 var app = angular.module("royaleClan", [
   "ngResource",
