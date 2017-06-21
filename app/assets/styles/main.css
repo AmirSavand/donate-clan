@@ -219,4 +219,12 @@ member role {
 }
 
 
+/* Card header */
+
+.card-header .fa {
+    float: right;
+    margin-top: 5px;
+}
+
+
 }
