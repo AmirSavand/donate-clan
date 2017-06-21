@@ -1,8 +1,60 @@
-<br>
+<div class="container-fluid cover cover-bg bg-arena">
+  <div class="container">
+    <h1><img src="/assets/images/clan.png" width="48"> Donate Clan <small class="o-fade">{{ tag }}</small></h1>
+    <br>
+    <ng-include src="'components/home/description.html'"></ng-include>
+  </div>
+</div>
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>Donate Clan</h1>
-    <p>Welcome to Donate clan <small>(#2Y2C9RCJ)</small></p>
+<div class="container s-pad-y">
+  <div class="row">
+    <!-- Clan members -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header s-pad-soft">
+          <i class="fa fa-fw fa-users"></i> Clan Members
+        </div>
+        <div class="card-block s-pad-no">
+          <!-- Member -->
+          <member class="{{ member.get.rarity }}"
+            ui-sref="app.member({ name: member.get.name, member: member })"
+            ng-repeat="member in members | orderBy:'-score'">
+            <name>{{ member.get.name | underspace }}</name>
+            <score>{{ member.get.score }}</score><br>
+            <role>{{ member.role }}</role>
+            <tag ng-repeat="tag in member.tags track by $index" uib-tooltip="{{ tag.name }}">
+              <i class="fa fa-{{ tag.font }}"></i>
+            </tag>
+          </member>
+        </div>
+      </div>
+    </div>
+    <!-- Random deck -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header s-pad-soft">
+          <i class="fa fa-fw fa-random"></i> Random Deck
+        </div>
+        <div class="card-block">
+          <ng-include card ng-repeat="card in deck.cards"
+            src="'components/card/card_include.html'" ng-click="card.view()">
+          </ng-include>
+        </div>
+        <div class="card-block">
+          <div class="row">
+            <div class="col-sm-10">
+              <button class="btn btn-block btn-warning" ng-disabled="generating" ng-click="generateDeck()">
+                <i class="fa fa-fw fa-refresh"></i> <b>Next Random Deck</b>
+              </button>
+            </div>
+            <div class="col-sm-2">
+              <a class="btn btn-block btn-success text-white" ui-sref="app.deck-new({deck: deck})">
+                <i class="fa fa-fw fa-save"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
