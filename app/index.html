@@ -13,9 +13,10 @@
   <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
 
   <!-- build:css(.) assets/styles/vendor.css -->
-  <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
   <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css" />
   <!-- endbower -->
   <!-- endbuild -->
@@ -47,6 +48,8 @@
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/AngularJS-Toaster/toaster.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -60,24 +63,25 @@
   <script src="filters/underspace_filter.js"></script>
   <script src="filters/reverse_filter.js"></script>
 
-  <script src="components/main/main.js"></script>
+  <script src="components/api/api.js"></script>
 
-  <script src="components/home/home.js"></script>
+  <script src="components/account/auth/auth.js"></script>
+  <script src="components/account/auth/auth_interceptor.js"></script>
+
+  <script src="components/main/main_controller.js"></script>
+
+  <script src="components/home/home_controller.js"></script>
 
   <script src="components/member/member.js"></script>
-  <script src="components/member/member_service.js"></script>
+  <script src="components/member/member_controller.js"></script>
 
   <script src="components/card/card.js"></script>
-  <script src="components/card/card_service.js"></script>
+  <script src="components/card/card_controller.js"></script>
 
-  <script src="components/deck/deck_service.js"></script>
-
-  <script src="components/deck_list/deck_list.js"></script>
-  <script src="components/deck_list/deck_list_service.js"></script>
-
-  <script src="components/deck_new/deck_new.js"></script>
-
-  <script src="components/tag/tag_service.js"></script>
+  <script src="components/deck/deck.js"></script>
+  <script src="components/deck/deck_new/deck_new_controller.js"></script>
+  <script src="components/deck/deck_list/deck_list.js"></script>
+  <script src="components/deck/deck_list/deck_list_controller.js"></script>
   <!-- endbuild -->
 
   <!-- Store renamed paths -->
