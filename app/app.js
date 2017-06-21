@@ -4,6 +4,7 @@
  * @name module
  */
 var app = angular.module("royaleClan", [
+  "ngResource",
   "ui.router",
   "toaster"
 ]);
