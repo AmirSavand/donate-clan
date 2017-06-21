@@ -47,4 +47,15 @@ button,
 }
 
 
+/* Backgrounds */
+
+.bg-arena {
+    background-image: url("../images/arena.jpg");
+}
+
+.bg-pattern {
+    background-image: url("../images/pattern.jpg");
+}
+
+
 }
