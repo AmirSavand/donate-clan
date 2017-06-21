@@ -6,6 +6,7 @@
 var app = angular.module("royaleClan", [
   "ngResource",
   "ui.router",
+  "ui.bootstrap",
   "toaster"
 ]);
 
