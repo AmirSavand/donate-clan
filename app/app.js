@@ -23,7 +23,8 @@ app.config(function ($qProvider, $resourceProvider, $locationProvider) {
 /**
  * @name run
  */
-app.run(function () {
+app.run(function ($window, $rootScope, $anchorScroll) {
+  $rootScope.version = "1.0.0";
   $rootScope.tag = "#2Y2C9RCJ";
   $rootScope.feedback = "mailto:amir@savandbros.com?Subject=Donate Clan v" + $rootScope.version;
 
