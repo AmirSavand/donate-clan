@@ -57,10 +57,10 @@ app.constant("Constant", {
   ],
   sorts: {
     rarity: {
-      Common: 0,
-      Rare: 1,
-      Epic: 2,
-      Legendary: 3
+      common: 0,
+      rare: 1,
+      epic: 2,
+      legendary: 3
     },
     type: {
       Troop: 0,
