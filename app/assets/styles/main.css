@@ -58,4 +58,63 @@ button,
 }
 
 
+/* Member */
+
+member {
+    padding: 12px 25px;
+    cursor: pointer;
+    display: block;
+}
+
+member:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+member:first-child {
+    border-top: none;
+}
+
+member:last-child {
+    border-bottom: none;
+}
+
+member name {
+    font-size: 1.4em;
+}
+
+member.legendary name,
+.rarity-legendary {
+    background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+    background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+member.epic name,
+.rarity-epic {
+    color: #ce02ff;
+}
+
+member.rare name,
+.rarity-rare {
+    color: #ef761d;
+}
+
+member.common name {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+member score {
+    float: right;
+    font-size: 1.4em;
+    padding-top: 4px;
+}
+
+member role {
+    text-transform: uppercase;
+    opacity: 0.8;
+    font-size: 0.9em;
+}
+
 }
