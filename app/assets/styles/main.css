@@ -1,5 +1,16 @@
 /* Global */
 
 body {
-    padding-top: 56px;
+    font-family: "Righteous", sans-serif;
+    background: whitesmoke;
+}
+
+a,
+button,
+[ui-sref],
+[ng-click] {
+    cursor: pointer;
+}
+
+
 }
