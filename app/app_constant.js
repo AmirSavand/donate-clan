@@ -43,6 +43,10 @@ app.constant("Constant", {
     "whatsapp": {
       font: "whatsapp",
       sentence: "has joined the clan's WhatsApp group."
+  env: {
+    api: {
+      royaleClan: "http://royaleclan:8000/",
+      clashApi: "http://www.clashapi.xyz/api/"
     }
   },
   roles: [
