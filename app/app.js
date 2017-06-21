@@ -24,6 +24,7 @@ app.config(function ($qProvider, $resourceProvider, $locationProvider) {
  * @name run
  */
 app.run(function () {
+  $rootScope.tag = "#2Y2C9RCJ";
   $rootScope.feedback = "mailto:amir@savandbros.com?Subject=Donate Clan v" + $rootScope.version;
 
   $rootScope.$on('$viewContentLoaded', function () {
