@@ -202,4 +202,21 @@ member role {
     font-weight: bold;
 }
 
+
+/* Modal */
+
+.fade.in {
+    opacity: 1;
+}
+
+.modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+
+.modal-content {
+    margin-top: 200px;
+}
+
+
 }
