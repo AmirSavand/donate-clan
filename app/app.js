@@ -16,6 +16,7 @@ var app = angular.module("royaleClan", [
  */
 app.config(function ($qProvider, $locationProvider) {
   $qProvider.errorOnUnhandledRejections(false);
+  $resourceProvider.defaults.stripTrailingSlashes = false;
 });
 
 /**
