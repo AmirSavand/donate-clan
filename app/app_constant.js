@@ -45,6 +45,12 @@ app.constant("Constant", {
       sentence: "has joined the clan's WhatsApp group."
     }
   },
+  roles: [
+    "member",
+    "elder",
+    "coleader",
+    "leader",
+  ],
   sorts: {
     rarity: {
       Common: 0,
