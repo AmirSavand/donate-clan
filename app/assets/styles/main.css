@@ -282,3 +282,23 @@ member role {
     background: rgba(0, 0, 0, 0.2);
     text-transform: capitalize;
 }
+
+
+/* User picture */
+
+.user-picture-wrapper {
+    text-align: center;
+}
+
+.user-picture {
+    background-size: cover;
+    background-position: center;
+    background-color: #111;
+    max-width: 100%;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    box-sizing: content-box;
+    border-radius: 100%;
+    border: 6px solid rgba(0, 0, 0, 0.5);
+}
