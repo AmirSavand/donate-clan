@@ -1,0 +1,47 @@
+<div class="container s-mar-y">
+  <div class="row">
+    <div class="col-md-4">
+
+      <div class="card">
+        <div class="card-block bg-inverse text-white text-center">
+          <div class="user-picture-wrapper">
+            <div class="user-picture" style="background-image: url('{{ user.picture }}')"></div>
+          </div>
+          <br>
+          <h1>
+            <small><i class="fa fa-user-secret text-warning" title="{{ user.username }} is an admin"></i></small>
+            {{ user.username }}
+          </h1>
+          <hr>
+          <p class="o-fade-soft">
+            {{ user.about }}
+            <small ng-if="user.link">
+              <br><a ng-href="{{ user.link }}" target="_blank">{{ user.link }}</a>
+            </small>
+          </p>
+        </div>
+        <div class="card-block">
+          <p>
+            <small>XP:</small>
+            <span class="pull-right"><i class="fa fa-arrow-up text-warning"></i> {{ user.xp }}</span>
+          </p>
+          <p ng-if="user.member">
+            <small>Membership:</small>
+            <a ui-sref="app.member({member: user.member, name: user.member.get.name})" class="pull-right">
+              {{ user.member.get.name }}
+            </a>
+          </p>
+          <p ng-if="user.hated_card">
+            <small>Hated Card:</small>
+            <span class="pull-right">{{ user.hated_card }}</span>
+          </p>
+          <p ng-if="user.link">
+            <small>Country:</small>
+            <span class="pull-right">{{ user.country }}</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

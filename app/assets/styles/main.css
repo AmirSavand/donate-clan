@@ -1,199 +1,120 @@
 /* Global */
 
 body {
-    padding-top: 100px;
-    background: #333;
-    cursor: default;
-}
-
-body.pattern {
-    background-image: url("../images/pattern.jpg");
-}
-
-body:not(.pattern) {
-    background-size: 100%;
-    background-position: center;
-    background-attachment: fixed;
-    box-shadow: inset 0 0 0 10000px rgba(0, 0, 0, 0.5);
+    font-family: "Righteous", sans-serif;
+    background: whitesmoke;
 }
 
 a,
 button,
-input {
-    outline: 0 !important;
-}
-
 [ui-sref],
-[ng-click],
-[href] {
+[ng-click] {
     cursor: pointer;
 }
 
 
-/* Selection */
+/* Button */
 
-*::selection {
-    background-color: #2196f3;
-}
-
-[card] {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-
-/* Navbar */
-
-.navbar .fa {
-    font-size: 1.5em;
-    position: relative;
-    top: 3px;
-    margin-right: 6px;
-}
-
-.navbar-brand {
-    padding-right: 50px;
-}
-
-.navbar-brand small {
-    font-size: 0.5em;
-    margin-left: 4px;
+.btn-block {
     font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 
 /* Cover */
 
 .cover {
-    background-image: url(../images/arena.jpg);
-    margin-top: -36px;
-    margin-bottom: 30px;
-    height: 300px;
-    box-shadow: inset 0 0 0 10000px rgba(0, 0, 0, 0.5);
-    background-attachment: fixed;
-    background-size: 100%;
-    border-bottom: 2px solid #333;
-    padding: 20px;
-}
-
-.cover h2,
-.cover h4 {
+    padding: 60px 0;
     color: #fff;
-    text-shadow: 0 0 10px #000;
-    font-weight: bold;
+    background: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.cover h4 {
-    text-transform: uppercase;
-    text-shadow: 0 0 5px #000;
-    font-size: 1.2em;
-    padding-left: 2px;
+.cover p {
+    color: #eee;
+}
+
+.cover-bg {
+    padding: 100px 0;
+    box-shadow: inset 0 0 0 10000px rgba(0, 0, 0, 0.25);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.9);
+}
+
+.cover-bg:not(.cover-bg-pattern) {
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 0 0 10000px rgba(0, 0, 0, 0.75);
 }
 
 
-/* Panel */
+/* Backgrounds */
 
-.panel {
-    overflow: hidden;
+.bg-arena {
+    background-image: url("../images/arena.jpg");
 }
 
-.panel-title {
-    font-size: 1.6em;
-    padding: 20px 0;
-}
-
-.panel-title .fa:not(.init) {
-    float: right;
-    margin-right: 10px;
+.bg-pattern {
+    background-image: url("../images/pattern.jpg");
 }
 
 
 /* Member */
 
-[member] {
+member {
     padding: 12px 25px;
-    border: 1px solid #333;
-    margin-top: -1px;
-    border-right: 0;
-    border-left: 0;
-    background: rgba(30, 30, 30, 0.75);
-    transition: all 0.2s ease-in-out;
     cursor: pointer;
-    color: #eee;
+    display: block;
 }
 
-[member]:hover {
-    background: rgba(30, 30, 30, 0.9);
+member:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
 
-[member]:first-child {
+member:first-child {
     border-top: none;
 }
 
-[member]:last-child {
+member:last-child {
     border-bottom: none;
 }
 
-[member] name {
+member name {
     font-size: 1.4em;
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-[member].legendary name,
+member.legendary name,
 .rarity-legendary {
     background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
     background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: none;
 }
 
-[member].epic name,
+member.epic name,
 .rarity-epic {
-    color: #ff00dc;
+    color: #ce02ff;
 }
 
-[member].rare name,
+member.rare name,
 .rarity-rare {
-    color: orange;
+    color: #ef761d;
 }
 
-[member].common name {
-    color: rgba(255, 255, 255, 0.75);
+member.common name {
+    color: rgba(0, 0, 0, 0.7);
 }
 
-[member] score {
+member score {
     float: right;
-    font-size: larger;
+    font-size: 1.4em;
     padding-top: 4px;
 }
 
-[member] role {
-    font-weight: bold;
+member role {
     text-transform: uppercase;
     opacity: 0.8;
-}
-
-[member] tag {
-    float: right;
-    color: #32a7f4;
-    margin-left: 8px;
-    font-size: larger;
-    transition: all 0.2s ease-in-out;
-}
-
-[member] tag+.tooltip {
-    text-transform: capitalize;
-}
-
-[member] tag:hover {
-    color: #fff;
+    font-size: 0.9em;
 }
 
 
@@ -216,19 +137,32 @@ input {
 
 [card] cover {
     background-position: 50%;
+    background-size: 170px;
+    background-repeat: no-repeat;
     display: block;
     height: 180px;
     margin: 6px;
     border: 4px solid #666;
     border-radius: 2px;
     box-shadow: inset 0 -50px 20px -15px rgba(0, 0, 0, 0.75);
-    transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 
+[card] cover,
+[card] name,
+[card] cost {
+    transition: all 0.1s ease-in-out;
+}
+
 [card] cover:hover {
-    border-color: transparent !important;
-    background-position: 50% 70%;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    background-size: 180px;
+    box-shadow: none;
+}
+
+[card] cover:hover name,
+[card] cover:hover cost {
+    opacity: 0;
 }
 
 [card] cover.epic {
@@ -248,12 +182,12 @@ input {
     text-overflow: ellipsis;
     overflow: hidden;
     display: block;
-    font-weight: bold;
-    padding-top: 120px;
+    padding-top: 125px;
     width: 100%;
+    font-size: 0.8em;
 }
 
-[card] elixir-cost {
+[card] cost {
     background: #e22ee3;
     box-shadow: inset 0 -10px 8px rgba(0, 0, 0, 0.5);
     float: left;
@@ -263,125 +197,33 @@ input {
     height: 35px;
     border-radius: 100% 4px 100% 100%;
     color: #fea1ff;
-    font-size: 1.4em;
+    font-size: 1.3em;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     font-weight: bold;
 }
 
 
-/* Tooltip */
-
-[uib-tooltip] {
-    cursor: pointer;
-}
-
-.tooltip.in {
-    opacity: 1;
-}
-
-.tooltip .tooltip-inner {
-    font-weight: bold;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
-    font-size: larger;
-    color: #fff;
-}
-
-
 /* Modal */
 
-.modal .dark {
-    background: #333;
-}
-
-.modal .dark h3 {
-    color: #eee;
-}
-
-.modal-body.t-larger [type=radio] {
-    margin-top: 11px;
-}
-
-.modal-header .close {
-    margin-top: 7px;
-}
-
-.modal .tooltip {
-    display: none !important;
-}
-
-
-/* Footer */
-
-footer {
-    transition: all 0.3s ease-in-out;
-    opacity: 0.5;
-    font-size: 1.05em;
-    padding: 40px;
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 10000px 0 10000px rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
-    text-align: right;
-}
-
-footer:hover {
+.fade.in {
     opacity: 1;
 }
 
-
-/* Member detail */
-
-.member-detail tag {
-    display: inline-block;
-    border: 2px solid #fff;
-    background: #2196f3;
-    width: 42px;
-    height: 42px;
-    text-align: center;
-    line-height: 40px;
-    margin: 0 3px;
-    color: #fff;
-    border-radius: 100%;
-    text-shadow: none;
-    transition: all 0.2s ease-in-out;
+.modal-backdrop.in {
+    filter: alpha(opacity=50);
+    opacity: .5;
 }
 
-.member-detail tag:hover {
-    background: #fff;
-    color: #2196f3;
+.modal-content {
+    margin-top: 200px;
 }
 
 
-/* Slots */
+/* Card header */
 
-.slots {
-    position: absolute;
-}
-
-.slots elixir-cost {
-    display: none;
-}
-
-.slots cover {
-    border-color: saddlebrown;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.slots-wrapper {
-    min-height: 414px;
-}
-
-
-/* Inline Cards */
-
-.inline-cards-item {
-    display: inline-block;
-    width: 35%;
-    margin: 2px 0;
-    margin-right: -14%;
-}
-
-.inline-cards-item img {
-    max-width: 100%;
+.card-header .fa {
+    float: right;
+    margin-top: 5px;
 }
 
 
@@ -392,20 +234,71 @@ footer:hover {
     transition: opacity 0.2s ease-in-out;
 }
 
-
-/* Media */
-
-@media screen and (max-width: 767px) {
-    .slots-wrapper {
-        min-height: 798px;
-    }
+#toast-container .toast-title {
+    font-weight: normal;
+    letter-spacing: 0.5px;
 }
 
-@media screen and (max-width: 992px) {
-    body:not(.pattern),
-    .cover {
-        background-size: cover;
-        background-position: center;
-        height: auto;
-    }
+#toast-container .toast-message {
+    font-size: 0.8em;
+}
+
+
+/* Member detail */
+
+.card-detail {
+    background: #292b2c;
+    color: #fff;
+    padding: 40px 0;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    border-top: 4px solid;
+    text-align: center;
+}
+
+.card-detail .fa {
+    border-color: #222;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.2em;
+    font-size: 4em;
+    transition: all 0.15s ease-in-out;
+}
+
+.card-detail:hover .fa {
+    text-shadow: 0 0 10px;
+}
+
+.card-detail h5 {
+    opacity: 0.5;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.card-detail h2 {
+    margin-bottom: -38px;
+    margin-top: 20px;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.2);
+    text-transform: capitalize;
+}
+
+
+/* User picture */
+
+.user-picture-wrapper {
+    text-align: center;
+}
+
+.user-picture {
+    background-size: cover;
+    background-position: center;
+    background-color: #111;
+    max-width: 100%;
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    box-sizing: content-box;
+    border-radius: 100%;
+    border: 6px solid rgba(0, 0, 0, 0.5);
 }

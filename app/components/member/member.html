@@ -1,72 +1,22 @@
-<div class="container-fluid cover member-detail animated fadeIn">
+<div class="container-fluid cover cover-bg cover-bg-pattern bg-pattern">
   <div class="container">
-    <br>
-    <h2>
-      <span class="rarity-{{ member.rarity | lowercase }}">{{ member.name | underspace }}</span>
-      <b class="text-warning pull-right"><small>SCORE:</small> {{ member.score }}</b>
-    </h2>
-    <h4 class="col-xs-12">
-      {{ member.role }}
-      <span class="pull-right">
-        <tag ng-repeat="tag in member.tags track by $index" title="{{ tag.name }}">
-          <i class="fa fa-{{ tag.font }}"></i>
-        </tag>
-      </span>
-    </h4>
+    <h1>
+      <span class="rarity-{{ member.get.rarity | lowercase }}">{{ member.get.name | underspace }}</span>
+      <span class="text-warning pull-right"><i class="fa fa-star-half-o"></i> {{ member.get.score }}</span>
+    </h1>
   </div>
 </div>
 
-<div class="container member-detail animated fadeInUp">
+<div class="container s-mar-top">
 
   <div class="row">
-
-    <!-- Members -->
-    <div class="col-md-4 col-md-offset-1">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">About <i class="fa fa-user"></i></h3>
-        </div>
-        <ul class="panel-body list-group t-larger s-pad-no">
-          <li class="list-group-item">
-            Role:
-            <b class="pull-right t-larger">
-              {{ member.role | uppercase }}
-            </b>
-          </li>
-          <li class="list-group-item">
-            Membership Rarity:
-            <b class="pull-right t-larger rarity-{{ member.rarity | lowercase }}">
-              {{ member.rarity | uppercase }}
-            </b>
-          </li>
-          <li class="list-group-item">
-            Donation Rank:
-            <b class="pull-right t-larger text-primary">
-              {{ member.donation | uppercase }}
-            </b>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Members -->
-    <div class="col-md-6">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">Tags <i class="fa fa-tags"></i></h3>
-        </div>
-        <ul class="panel-body list-group t-larger s-pad-no" ng-if="member.tags.length">
-          <li class="list-group-item" ng-repeat="tag in member.tags">
-            <tag title="{{ tag.name }}">
-              <i class="fa fa-{{ tag.font }}"></i>
-            </tag>
-            {{ member.name | underspace }} {{ tag.sentence }}
-          </li>
-        </ul>
-        <div class="panel-body text-center t-larger" ng-if="!member.tags.length">
-          {{ member.name | underspace }} has no tags.
-        </div>
+    <div class="col-md-3" ng-repeat="card in detailCards">
+      <div class="card-detail text-{{ card.color }}">
+        <i class="fa fa-border fa-2x fa-{{ card.icon }} text-{{ card.color }}"></i>
+        <h5>{{ card.title }}</h5>
+        <h2>{{ card.value }}</h2>
       </div>
     </div>
   </div>
+
 </div>

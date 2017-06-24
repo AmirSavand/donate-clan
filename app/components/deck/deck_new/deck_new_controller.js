@@ -3,6 +3,53 @@
 app.controller("DeckNewController", function (Deck, Card, DeckList, toaster,
   $scope, $state, $stateParams, $http, $window) {
 
+  function setSlots() {
+    angular.element(".slots").width(angular.element(".slots + .row").width());
+  }
+
+  function syncDeckWithCards(cards) {
+    // Loop in the generated deck
+    angular.forEach(cards, function (data) {
+      // Loop in available cards
+      angular.forEach($scope.cards, function (card, i) {
+        // Find it in card collection
+        if (card.idName === data.idName) {
+          // Add it to the deck
+          $scope.deck.addCard($scope.cards[i]);
+        }
+      });
+    });
+  }
+
+  function setupViewingDeck() {
+    // If viewing/editing a deck
+    if ($scope.index) {
+      var viewingDeck = DeckList.get($scope.index);
+      $scope.deck = new Deck().import(viewingDeck.name, viewingDeck.cards);
+
+      // Setup cards to replace from availables
+      var cardsToReplace = $scope.deck.cards;
+      $scope.deck.cards = [];
+      syncDeckWithCards(cardsToReplace);
+    }
+
+    if ($scope.preDeck) {
+      syncDeckWithCards($scope.preDeck.cards);
+    }
+  }
+
+  function importLocalCards() {
+    angular.forEach($scope.localCards, function (card) {
+      $scope.cards.push(
+        new Card(
+          card._id, card.idName, card.name, card.arena, card.description,
+          card.elixirCost, card.order, card.rarity, card.type
+        )
+      );
+    });
+    setupViewingDeck();
+  }
+
   function constructor() {
 
     $scope.index = DeckList.get($stateParams.index) ? $stateParams.index : null;
@@ -35,53 +82,6 @@ app.controller("DeckNewController", function (Deck, Card, DeckList, toaster,
     setSlots();
   }
 
-  function setSlots() {
-    angular.element(".slots").width(angular.element(".slots + .row").width());
-  }
-
-  function setupViewingDeck() {
-    // If viewing/editing a deck
-    if ($scope.index) {
-      var viewingDeck = DeckList.get($scope.index);
-      $scope.deck = new Deck().import(viewingDeck.name, viewingDeck.cards);
-
-      // Setup cards to replace from availables
-      var cardsToReplace = $scope.deck.cards;
-      $scope.deck.cards = [];
-      syncDeckWithCards(cardsToReplace);
-    }
-
-    if ($scope.preDeck) {
-      syncDeckWithCards($scope.preDeck.cards);
-    }
-  }
-
-  function importLocalCards() {
-    angular.forEach($scope.localCards, function (card) {
-      $scope.cards.push(
-        new Card(
-          card._id, card.idName, card.name, card.arena, card.description,
-          card.elixirCost, card.order, card.rarity, card.type
-        )
-      );
-    });
-    setupViewingDeck();
-  }
-
-  function syncDeckWithCards(cards) {
-    // Loop in the generated deck
-    angular.forEach(cards, function (data) {
-      // Loop in available cards
-      angular.forEach($scope.cards, function (card, i) {
-        // Find it in card collection
-        if (card.idName === data.idName) {
-          // Add it to the deck
-          $scope.deck.addCard($scope.cards[i]);
-        }
-      });
-    });
-  }
-
   $scope.generateDeck = function () {
     $scope.generating = true;
     $http.get("http://www.clashapi.xyz/api/random-deck").then(function (data) {
@@ -106,7 +106,7 @@ app.controller("DeckNewController", function (Deck, Card, DeckList, toaster,
 
   angular.element($window).bind("resize", setSlots);
 
-  $scope.$on("donateClan.MainController:loadedCards", function (event, data) {
+  $scope.$on("royaleClan.MainController:loadedCards", function (event, data) {
     $scope.localCards = data;
     importLocalCards();
   });

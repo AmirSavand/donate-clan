@@ -1,71 +1,62 @@
-/* Spaces */
-
-.s-pad-no {
-    padding: 0;
-}
-
-.s-mar-no {
-    margin: 0;
-}
-
-
-/* Backgrounds */
-
-.bg-no {
-    background: none;
-}
-
-
-/* Disqus */
-
-.bg-dark {
-    background: rgba(30, 30, 30, 0.5);
-}
-
-
-/* Texts */
-
-.t-larger {
-    font-size: larger;
-}
-
-.t-bold {
-    font-weight: bold;
-}
-
-
-/* Colors */
-
-.col {
-    color: #eee;
-}
-
-.col-dark {
-    color: #333;
-}
-
-
-/* Opacities */
+/* Opacity */
 
 .o-fade {
     opacity: 0.5;
 }
 
 .o-fade-soft {
-    opacity: 0.75;
-}
-
-.o-fade-hard {
-    opacity: 0.25;
-}
-
-.o-fade-hover:hover {
-    opacity: 1;
+    opacity: 0.7;
 }
 
 
-/* Cursors */
+/* Spaces */
 
-.cur-no {
-    pointer-events: none;
+.s-mar-top {
+    margin-top: 50px;
+}
+
+.s-pad-top {
+    padding-top: 50px;
+}
+
+.s-mar-y {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.s-pad-y {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.s-mar-no {
+    margin: 0;
+}
+
+.s-pad-no {
+    padding: 0;
+}
+
+.s-mar-soft {
+    margin: 20px;
+}
+
+.s-pad-soft {
+    padding: 20px;
+}
+
+.s-mar-bottom-soft {
+    margin-bottom: 20px;
+}
+
+.s-pad-bottom-soft {
+    padding-bottom: 20px;
+}
+
+.s-mar-bottom {
+    margin-bottom: 50px;
+}
+
+.s-pad-bottom {
+    padding-bottom: 50px;
 }

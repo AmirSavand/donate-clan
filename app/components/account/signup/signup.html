@@ -1,0 +1,36 @@
+<div class="container s-mar-y">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-5 col-md-6">
+      <div class="card">
+        <!-- Title -->
+        <h4 class="card-block">
+          <i class="fa fa-user-plus pull-right text-muted"></i> Register
+        </h4>
+        <!-- Sign up form -->
+        <form class="card-block" name="form" ng-submit="signUp(form)">
+          <!-- Username -->
+          <div class="form-group" ng-class="{'has-danger': form.error.username}">
+            <input type="text" class="form-control form-control-lg" placeholder="Username"
+              ng-model="form.data.username" required ng-minlength="3">
+            <div class="form-control-feedback" ng-if="form.error.username">{{ form.error.username[0] }}</div>
+          </div>
+          <!-- Passowrd -->
+          <div class="form-group">
+            <input type="password" class="form-control form-control-lg" placeholder="Password"
+              ng-model="form.data.password" required ng-minlength="3">
+          </div>
+          <!-- Email -->
+          <div class="form-group" ng-class="{'has-danger': form.error.email}">
+            <input type="email" class="form-control form-control-lg" placeholder="Email (optional)"
+              ng-model="form.data.email">
+            <div class="form-control-feedback" ng-if="form.error.email">{{ form.error.email[0] }}</div>
+          </div>
+          <!-- Submit -->
+          <button class="btn btn-success btn-lg btn-block" ng-disabled="form.$invalid || form.loading">
+            <i class="fa fa-fw fa-send"></i> Register
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

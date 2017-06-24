@@ -1,88 +1,55 @@
-<div class="container-fluid cover animated fadeIn">
+<div class="container-fluid cover cover-bg bg-arena">
   <div class="container">
-    <h2>Donate <small>#2Y2C9RCJ</small><br></h2>
+    <h1><img src="/assets/images/clan.png" width="48"> Donate Clan <small class="o-fade">{{ tag }}</small></h1>
     <br>
-    <h4>Welcome to the Donate clan website!</h4>
-    <h4>We got a list of awesome/loyal donators below.</h4>
-    <h4>Feel free to join our clan and whatsapp group.</h4>
-    <h4>But only if you are an awesome donator <i class="fa fa-smile-o"></i></h4>
+    <ng-include src="'components/home/description.html'"></ng-include>
   </div>
 </div>
 
-<div class="container">
-
-  <div class="row animated fadeIn">
-
-    <!-- Members -->
+<div class="container s-pad-y">
+  <div class="row">
+    <!-- Clan members -->
     <div class="col-md-6">
-      <div class="panel panel-primary bg-no">
-        <div class="panel-heading">
-          <h3 class="panel-title">Members <i class="fa fa-users"></i></h3>
+      <div class="card">
+        <div class="card-header s-pad-soft">
+          <i class="fa fa-fw fa-users"></i> Clan Members
         </div>
-        <div class="panel-body s-pad-no">
-          <div member
-            class="{{ member.rarity }}"
-            ui-sref="app.member({'name': member.name, member: member})"
-            ng-click="member.modal(member)"
+        <div class="card-block s-pad-no">
+          <!-- Member -->
+          <member class="{{ member.get.rarity }}"
+            ui-sref="app.member({ name: member.get.name, member: member })"
             ng-repeat="member in members | orderBy:'-score'">
-            <name>{{ member.name | underspace }}</name>
-            <score>{{ member.score }}</score><br>
+            <name>{{ member.get.name | underspace }}</name>
+            <score>{{ member.get.score }}</score><br>
             <role>{{ member.role }}</role>
             <tag ng-repeat="tag in member.tags track by $index" uib-tooltip="{{ tag.name }}">
               <i class="fa fa-{{ tag.font }}"></i>
             </tag>
-          </div>
+          </member>
         </div>
       </div>
     </div>
-
+    <!-- Random deck -->
     <div class="col-md-6">
-      <!-- Random deck -->
-      <div class="panel panel-primary bg-dark">
-        <div class="panel-heading">
-          <h3 class="panel-title">Random Deck <i class="fa fa-th-large"></i></h3>
+      <div class="card">
+        <div class="card-header s-pad-soft">
+          <i class="fa fa-fw fa-random"></i> Random Deck
         </div>
-        <div class="panel-body">
-          <ng-include card
-            src="'components/card/card_include.html'"
-            ng-click="card.view()"
-            ng-repeat="card in deck.cards">
+        <div class="card-block">
+          <ng-include card ng-repeat="card in deck.cards"
+            src="'components/card/card_include.html'" ng-click="card.view()">
           </ng-include>
         </div>
-        <div class="panel-footer bg-dark">
+        <div class="card-footer">
           <div class="row">
-            <div class="col-sm-10">
-              <button class="btn btn-block btn-warning btn-lg t-bold"
-                ng-disabled="generating"
-                ng-click="generateDeck()">
-                <i class="fa fa-fw fa-refresh"></i> NEXT RANDOM DECK
+            <div class="col-sm-12">
+              <button class="btn btn-block btn-warning" ng-disabled="generating" ng-click="generateDeck()">
+                <i class="fa fa-fw fa-refresh"></i> <b>Next Random Deck</b>
               </button>
-            </div>
-            <div class="col-sm-2">
-              <a class="btn btn-block btn-success btn-lg t-bold"
-                ui-sref="app.deck-new({deck: deck})">
-                <i class="fa fa-fw fa-save"></i>
-              </a>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Discussion -->
-      <div class="panel panel-primary bg-dark">
-        <div class="panel-heading">
-          <h3 class="panel-title">Discussion <i class="fa fa-comments"></i></h3>
-        </div>
-        <div class="panel-body text-center" style="min-height: 80px">
-          <!-- Join button -->
-          <button class="btn btn-lg t-bold btn-warning" ng-click="joinDiscussion()" ng-if="!discussion">
-            <i class="fa fa-fw fa-sign-in"></i> Join Discussion
-          </button>
-          <!-- Disqus -->
-          <div disqus="donate-clan" ng-if="discussion"></div>
-        </div>
-      </div>
     </div>
-
   </div>
 </div>

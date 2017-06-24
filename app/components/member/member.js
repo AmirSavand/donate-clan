@@ -1,25 +1,18 @@
 "use strict";
 
-app.controller("MemberController", function (Member, Dest, $scope, $http, $window, $state, $stateParams) {
+app.service("Member", function (Constant) {
+  return function (data) {
 
-  function constructor() {
-    $scope.member = $stateParams.member;
+    /**
+     * @name get
+     * @type {object}
+     */
+    this.get = data;
 
-    // Get member (if not given)
-    if (!$scope.member) {
-      $http.get(Dest.members).then(function (data) {
-        angular.forEach(data.data, function (data) {
-          if (data.name === $stateParams.name) {
-            $scope.member = new Member(data.name, data.role, data.rarity, data.donation, data.tags);
-          }
-        });
-        if (!$scope.member) {
-          $window.alert("This member doesn't exist, or has been removed!");
-          $state.go("app.home");
-        }
-      });
-    }
-  }
-
-  constructor();
+    /**
+     * @name role
+     * @type {string}
+     */
+    this.role = Constant.roles[data.role];
+  };
 });
