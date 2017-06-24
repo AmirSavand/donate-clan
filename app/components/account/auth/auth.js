@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Auth", function (API, toaster, $rootScope) {
+app.service("Auth", function (Member, API, toaster, $rootScope) {
 
   /**
    * @private
@@ -12,10 +12,17 @@ app.service("Auth", function (API, toaster, $rootScope) {
    * @returns {object|boolean}
    */
   this.getAuth = function () {
-    if (localStorage.getItem("user")) {
-      return JSON.parse(localStorage.getItem("user"));
+    var user = false;
+
+    if (this.isAuth()) {
+      user = JSON.parse(localStorage.getItem("user"));
+      // Instantiate member
+      if (user.member) {
+        user.member = new Member(user.member);
+      }
     }
-    return false;
+
+    return user;
   };
 
   /**
@@ -36,7 +43,7 @@ app.service("Auth", function (API, toaster, $rootScope) {
    * @name unAuth
    */
   this.unAuth = function () {
-    if (!this.isAuth) {
+    if (!this.isAuth()) {
       return;
     }
     localStorage.removeItem("JWT");
