@@ -17,6 +17,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     templateUrl: "components/home/home.html"
   })
 
+  .state("app.signup", {
+    url: "/register",
+    controller: "SignUpController",
+    templateUrl: "components/account/signup/signup.html",
+    auth: false,
+    params: {
+      user: null
+    }
+  })
+
   .state("app.member", {
     url: "/member/:name",
     controller: "MemberController",
