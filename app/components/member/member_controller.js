@@ -42,19 +42,22 @@ app.controller("MemberController", function (API, Member, toaster, $scope, $stat
   }
 
   function constructor() {
-    $scope.member = $stateParams.member;
-    $scope.name = $stateParams.name;
-
-    // Get member (if not given)
     if (!$scope.member) {
-      API.Members.get({ name: $stateParams.name }, function (data) {
-        $scope.member = new Member(data);
-        generateDetailCards($scope.member);
-      }, function () {
-        toaster.error($scope.name, "This member doesn't exist, or has been removed!");
-        $state.go("app.home");
-      });
+      // Get member from backend
+      API.Members.get({ name: $stateParams.name },
+        function (data) {
+          // Instantiate member
+          $scope.member = new Member(data);
+          generateDetailCards($scope.member);
+        },
+        function () {
+          toaster.error($stateParams.name, "This member doesn't exist, or has been removed!");
+          $state.go("app.home");
+        }
+      );
     } else {
+      // Load member from param
+      $scope.member = new Member($stateParams.member);
       generateDetailCards($scope.member);
     }
   }
