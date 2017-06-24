@@ -15,12 +15,21 @@
             {{ user.username }}
           </a>
           <div class="dropdown-menu">
+            <a class="dropdown-item" ui-sref="app.user({username: user.username, user: user})">
+              <i class="fa fa-fw fa-user-circle"></i> Profile
+            </a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" ng-click="auth.unAuth()">
               <i class="fa fa-fw fa-sign-out"></i> Sign Out
             </a>
           </div>
         </li>
+        <!-- Sign up -->
+        <li class="nav-item" ui-sref-active="active" ng-if="!auth.isAuth()">
+          <a class="nav-link" ui-sref="app.signup">Register</a>
+        </li>
         <!-- Sign in -->
+        <li class="nav-item dropdown" ng-if="auth.isAuth()">
         <li class="nav-item dropdown" ng-if="!auth.isAuth()">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown">
             Sign In
