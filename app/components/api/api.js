@@ -12,7 +12,7 @@ app.service("API", function (Constant, $resource) {
     endpoint: "members/:name/" // POST, GET, DELETE
   }, {
     name: "Users",
-    endpoint: "users/:name/" // POST, GET, DELETE
+    endpoint: "users/:username/" // POST, GET, DELETE
   }, {
     name: "Cards",
     endpoint: "cards/", // GET
