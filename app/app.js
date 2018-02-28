@@ -14,10 +14,11 @@ var app = angular.module("royaleClan", [
 /**
  * @name config
  */
-app.config(function ($qProvider, $resourceProvider, $locationProvider) {
+app.config(function ($qProvider, $resourceProvider, $locationProvider, uibDropdownConfig) {
   $qProvider.errorOnUnhandledRejections(false);
   $resourceProvider.defaults.stripTrailingSlashes = false;
   $locationProvider.hashPrefix("");
+  uibDropdownConfig.openClass = 'show';
 });
 
 /**

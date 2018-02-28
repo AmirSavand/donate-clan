@@ -3,6 +3,7 @@
 body {
     font-family: "Righteous", sans-serif;
     background: whitesmoke;
+    padding-top: 56px;
 }
 
 a,
@@ -50,11 +51,11 @@ button,
 /* Backgrounds */
 
 .bg-arena {
-    background-image: url("../images/arena.jpg");
+    background-image: url("../img/arena.jpg");
 }
 
 .bg-pattern {
-    background-image: url("../images/pattern.jpg");
+    background-image: url("../img/pattern.jpg");
 }
 
 
@@ -221,7 +222,7 @@ member role {
 
 /* Card header */
 
-.card-header .fa {
+.card-header .fas {
     float: right;
     margin-top: 5px;
 }

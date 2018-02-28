@@ -1,6 +1,6 @@
 <div class="container-fluid cover cover-bg bg-arena">
   <div class="container">
-    <h1><img src="/assets/images/clan.png" width="48"> Donate Clan <small class="o-fade">{{ tag }}</small></h1>
+    <h1><img src="/assets/img/clan.png" width="48"> Royale Clan <small class="o-fade">{{ tag }}</small></h1>
     <br>
     <ng-include src="'components/home/description.html'"></ng-include>
   </div>
@@ -12,19 +12,14 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header s-pad-soft">
-          <i class="fa fa-fw fa-users"></i> Clan Members
+          <i class="fas-fw fa-users"></i> Clan Members
         </div>
-        <div class="card-block s-pad-no">
+        <div class="card-body s-pad-no">
           <!-- Member -->
           <member class="{{ member.get.rarity }}"
             ui-sref="app.member({ name: member.get.name, member: member })"
-            ng-repeat="member in members | orderBy:'-score'">
+            ng-repeat="member in members | orderBy:'-clan_chest_champion'">
             <name>{{ member.get.name | underspace }}</name>
-            <score>{{ member.get.score }}</score><br>
-            <role>{{ member.role }}</role>
-            <tag ng-repeat="tag in member.tags track by $index" uib-tooltip="{{ tag.name }}">
-              <i class="fa fa-{{ tag.font }}"></i>
-            </tag>
           </member>
         </div>
       </div>
@@ -33,9 +28,9 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header s-pad-soft">
-          <i class="fa fa-fw fa-random"></i> Random Deck
+          <i class="fas-fw fa-random"></i> Random Deck
         </div>
-        <div class="card-block">
+        <div class="card-body">
           <ng-include card ng-repeat="card in deck.cards"
             src="'components/card/card_include.html'" ng-click="card.view()">
           </ng-include>
@@ -44,7 +39,7 @@
           <div class="row">
             <div class="col-sm-12">
               <button class="btn btn-block btn-warning" ng-disabled="generating" ng-click="generateDeck()">
-                <i class="fa fa-fw fa-refresh"></i> <b>Next Random Deck</b>
+                <i class="fas-fw fa-refresh"></i> <b>Next Random Deck</b>
               </button>
             </div>
           </div>

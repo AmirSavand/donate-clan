@@ -3,11 +3,11 @@
     <div class="col-lg-5 col-md-6">
       <div class="card">
         <!-- Title -->
-        <h4 class="card-block">
-          <i class="fa fa-user-plus pull-right text-muted"></i> Register
+        <h4 class="card-body">
+          <i class="fas fa-user-plus float-right text-muted"></i> Register
         </h4>
         <!-- Sign up form -->
-        <form class="card-block" name="form" ng-submit="signUp(form)">
+        <form class="card-body" name="form" ng-submit="signUp(form)">
           <!-- Username -->
           <div class="form-group" ng-class="{'has-danger': form.error.username}">
             <input type="text" class="form-control form-control-lg" placeholder="Username"
@@ -27,7 +27,7 @@
           </div>
           <!-- Submit -->
           <button class="btn btn-success btn-lg btn-block" ng-disabled="form.$invalid || form.loading">
-            <i class="fa fa-fw fa-send"></i> Register
+            <i class="fas fa-fw fa-sign-in-alt"></i> Register
           </button>
         </form>
       </div>

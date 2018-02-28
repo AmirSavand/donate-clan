@@ -7,7 +7,7 @@
 app.constant("Constant", {
   env: {
     api: {
-      royaleClan: "http://royaleclan:8000/",
+      royaleClan: "http://127.0.0.1:8000/",
       clashApi: "http://www.clashapi.xyz/api/"
     }
   },

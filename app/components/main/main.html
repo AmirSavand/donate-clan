@@ -1,10 +1,10 @@
-<nav class="navbar navbar-inverse bg-inverse navbar-toggleable-sm sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="container">
     <!-- Brand -->
-    <a class="navbar-brand" ui-sref="app.home">Donate Clan</a>
+    <a class="navbar-brand" ui-sref="app.home">Royale Clan</a>
     <!-- Links -->
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto"></ul>
@@ -16,11 +16,11 @@
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" ui-sref="app.user({username: user.username, user: user})">
-              <i class="fa fa-fw fa-user-circle"></i> Profile
+              <i class="fas-fw fa-user-circle"></i> Profile
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" ng-click="auth.unAuth()">
-              <i class="fa fa-fw fa-sign-out"></i> Sign Out
+              <i class="fas-fw fa-sign-out"></i> Sign Out
             </a>
           </div>
         </li>
@@ -35,7 +35,7 @@
             Sign In
           </a>
           <form name="form" ng-submit="auth.signIn(form.username, form.password, form)"
-            class="dropdown-menu s-pad-soft bg-inverse" style="min-width: 200px">
+            class="dropdown-menu s-pad-soft bg-dark" style="min-width: 200px">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Username" ng-model="form.username" required>
             </div>

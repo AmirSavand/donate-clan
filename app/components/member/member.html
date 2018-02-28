@@ -2,7 +2,7 @@
   <div class="container">
     <h1>
       <span class="rarity-{{ member.get.rarity | lowercase }}">{{ member.get.name | underspace }}</span>
-      <span class="text-warning pull-right"><i class="fa fa-star-half-o"></i> {{ member.get.score }}</span>
+      <!-- <span class="text-warning float-right"><i class="fas fa-star"></i> 244{{ member.get.score }}</span> -->
     </h1>
   </div>
 </div>
@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-md-3" ng-repeat="card in detailCards">
       <div class="card-detail text-{{ card.color }}">
-        <i class="fa fa-border fa-2x fa-{{ card.icon }} text-{{ card.color }}"></i>
+        <i class="fas fa-5x fa-{{ card.icon }} text-{{ card.color }}"></i>
         <h5>{{ card.title }}</h5>
         <h2>{{ card.value }}</h2>
       </div>

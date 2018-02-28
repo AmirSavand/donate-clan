@@ -1,8 +1,8 @@
 <div class="card">
-  <h4 class="card-header bg-inverse text-white text-center s-pad-soft">
+  <h4 class="card-header bg-dark text-white text-center s-pad-soft">
     {{ card.name | uppercase }}
   </h4>
-  <div class="card-block">
+  <div class="card-body">
     <div class="row">
       <div class="col-md-5 text-center">
         <img ng-src="{{ card.image }}" style="max-width: 100%">
@@ -10,19 +10,19 @@
       <div class="col-md-7">
         <h4>
           <small class="o-fade-soft">RARITY</small>
-          <b class="pull-right rarity-{{ card.rarity | lowercase }}">{{ card.rarity }}</b>
+          <b class="float-right rarity-{{ card.rarity | lowercase }}">{{ card.rarity }}</b>
         </h4>
         <h4>
           <small class="o-fade-soft">COST</small>
-          <b class="pull-right">{{ card.elixirCost }}</b>
+          <b class="float-right">{{ card.elixirCost }}</b>
         </h4>
         <h4>
           <small class="o-fade-soft">TYPE</small>
-          <b class="pull-right">{{ card.type }}</b>
+          <b class="float-right">{{ card.type }}</b>
         </h4>
         <h4>
           <small class="o-fade-soft">ARENA</small>
-          <b class="pull-right">{{ card.arena }}</b>
+          <b class="float-right">{{ card.arena }}</b>
         </h4>
         <br>
         <p class="small">{{ card.description }}</p>

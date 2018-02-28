@@ -9,9 +9,9 @@ app.controller("UserController", function (Member, API, $scope, $stateParams) {
       API.Users.get({ username: $stateParams.username }, function (data) {
         $scope.user = data;
 
-        if ($scope.user.member) {
-          $scope.user.member = new Member($scope.user.member);
-        }
+        // if ($scope.user.member) {
+        //   $scope.user.member = new Member($scope.user.member);
+        // }
       });
     }
   }

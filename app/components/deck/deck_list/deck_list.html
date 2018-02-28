@@ -5,11 +5,11 @@
         style="background: rgba(0, 0, 0, 0.5)" >
         <div class="panel-heading">
           <b class="t-larger">{{ deck.name }}</b>
-          <div class="pull-right">
+          <div class="float-right">
             <div class="label label-info" style="margin-top: 5px"
               uib-tooltip="Avg Elixir Cost" tooltip-placement="left">
               <span class="t-larger">{{ deck.getAvgElixirCost() || 0 | number:1 }}</span>
-              <i class="fa fa-tint init"></i>
+              <i class="fas-tint init"></i>
             </div>
           </div>
         </div>
@@ -25,11 +25,11 @@
           <button title="Delete {{ deck.name }}"
             class="btn btn-default o-fade-hard o-fade-hover"
             ng-click="remove(deck)">
-            <i class="fa fa-fw fa-trash"></i>
+            <i class="fas-fw fa-trash"></i>
           </button>
-          <a class="btn btn-warning pull-right"
+          <a class="btn btn-warning float-right"
             ui-sref="app.deck-new({index: deck.index})">
-            <i class="fa fa-fw fa-arrow-right"></i>
+            <i class="fas-fw fa-arrow-right"></i>
           </a>
         </div>
       </div>
@@ -38,7 +38,7 @@
       <div class="panel panel-default animated bounce o-fade o-fade-hover"
         style="background: rgba(0, 0, 0, 0.5)">
         <div class="panel-body text-center" ui-sref="app.deck-new" style="padding: 50px 0">
-          <i class="fa fa-5x fa-plus text-warning"></i>
+          <i class="fas-5x fa-plus text-warning"></i>
         </div>
       </div>
     </div>

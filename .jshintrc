@@ -1,6 +1,8 @@
 {
+  "node": true,
   "globals": {
     "angular": false,
-    "app": true
+    "app": true,
+    "localStorage": true
   }
 }

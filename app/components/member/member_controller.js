@@ -4,40 +4,35 @@ app.controller("MemberController", function (API, Member, toaster, $scope, $stat
 
   function generateDetailCards(member) {
     $scope.detailCards = [{
-      icon: "user-circle",
-      color: "primary",
-      title: "Role",
-      value: member.role
-    }, {
-      icon: "diamond",
-      color: "danger",
-      title: "Rarity",
-      value: member.get.rarity
-    }, {
-      icon: "star-half-o",
-      color: "warning",
-      title: "Score",
-      value: member.get.score
-    }, {
-      icon: "trophy",
-      color: "info",
-      title: "Leaderboard Score",
-      value: member.get.leaderboard_score
-    }, {
+    //   icon: "user-circle",
+    //   color: "primary",
+    //   title: "Role",
+    //   value: member.role
+    // }, {
+    //   icon: "diamond",
+    //   color: "danger",
+    //   title: "Rarity",
+    //   value: member.get.rarity
+    // }, {
+    //   icon: "star-half-o",
+    //   color: "warning",
+    //   title: "Score",
+    //   value: member.get.score
+    // }, {
+    //   icon: "trophy",
+    //   color: "info",
+    //   title: "Leaderboard Score",
+    //   value: member.get.leaderboard_score
+    // }, {
       icon: "plus-circle",
       color: "success",
-      title: "Top Donation",
-      value: "+" + member.get.top_donation
+      title: "Most Donation",
+      value: "+" + member.get.most_donated
     }, {
-      icon: "cube",
+      icon: "trophy",
       color: "warning",
       title: "1st Clan Chest",
-      value: member.get.first_clan_chest
-    }, {
-      icon: "cubes",
-      color: "warning",
-      title: "1st Clan Battle Chest",
-      value: member.get.first_clan_battle_chest
+      value: member.get.clan_chest_champion
     }];
   }
 
