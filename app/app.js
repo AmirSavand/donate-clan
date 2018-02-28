@@ -35,8 +35,6 @@ app.run(function (Auth, toaster, $state, $window, $rootScope, $anchorScroll) {
 
   $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
 
-    console.log(123);
-
     // Check authentication for state
     if (typeof toState.auth !== "undefined") {
 
