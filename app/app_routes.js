@@ -31,7 +31,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     url: "/u/:username",
     controller: "UserController",
     templateUrl: "components/user/user.html",
-    auth: true,
     params: {
       user: null
     }
