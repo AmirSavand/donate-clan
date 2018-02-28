@@ -36,6 +36,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     }
   })
 
+  .state("app.settings", {
+    url: "/settings",
+    controller: "SettingsController",
+    templateUrl: "components/account/settings/settings.html",
+    auth: true
+  })
+
   .state("app.member", {
     url: "/m/:tag",
     controller: "MemberController",
