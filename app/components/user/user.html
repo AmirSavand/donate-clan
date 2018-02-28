@@ -8,7 +8,7 @@
           <div class="user-picture-wrapper">
             <div class="user-picture" style="background-image: url('{{ user.picture || 'assets/img/avatar.png' }}')"></div>
           </div>
-          <br>
+
           <!-- User name and icon -->
           <h1>
             <small ng-if="user.is_admin">
@@ -16,7 +16,7 @@
             </small>
             {{ user.username }}
           </h1>
-          <hr>
+
           <!-- About -->
           <p class="o-fade-soft">{{ user.about || "Nothing to say..." }}</p>
         </div>
@@ -53,7 +53,7 @@
           </div>
 
           <!-- Last Seen -->
-          <div class="list-group-item">
+          <div class="list-group-item" ng-if="user.last_login">
             <span class="text-secondary">
               <i class="fas fa-fw o-fade fa-sign-in-alt"></i> Last Seen:
             </span>
@@ -61,7 +61,7 @@
           </div>
 
           <!-- Date Joined -->
-          <div class="list-group-item">
+          <div class="list-group-item" ng-if="user.date_joined">
             <span class="text-secondary">
               <i class="fas fa-fw o-fade fa-calendar-alt"></i> Date Joined:
             </span>
