@@ -1,5 +1,5 @@
 <div class="card">
-  <h4 class="card-header bg-dark text-white text-center s-pad-soft">
+  <h4 class="card-header bg-dark text-white text-center py-4">
     {{ card.name | uppercase }}
   </h4>
   <div class="card-body">
@@ -8,25 +8,29 @@
         <img ng-src="{{ card.image }}" style="max-width: 100%">
       </div>
       <div class="col-md-7">
-        <h4>
-          <small class="o-fade-soft">RARITY</small>
+        <h5>
+          <small class="text-secondary">RARITY</small>
           <b class="float-right rarity-{{ card.rarity | lowercase }}">{{ card.rarity }}</b>
-        </h4>
-        <h4>
-          <small class="o-fade-soft">COST</small>
+        </h5>
+        <hr>
+        <h5>
+          <small class="text-secondary">COST</small>
           <b class="float-right">{{ card.elixirCost }}</b>
-        </h4>
-        <h4>
-          <small class="o-fade-soft">TYPE</small>
+        </h5>
+        <hr>
+        <h5>
+          <small class="text-secondary">TYPE</small>
           <b class="float-right">{{ card.type }}</b>
-        </h4>
-        <h4>
-          <small class="o-fade-soft">ARENA</small>
+        </h5>
+        <hr>
+        <h5>
+          <small class="text-secondary">ARENA</small>
           <b class="float-right">{{ card.arena }}</b>
-        </h4>
-        <br>
-        <p class="small">{{ card.description }}</p>
+        </h5>
+        <hr>
       </div>
+      <br>
+      <p class="px-3 pt-3 m-0">{{ card.description }}</p>
     </div>
   </div>
 </div>
