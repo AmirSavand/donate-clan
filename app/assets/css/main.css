@@ -121,22 +121,22 @@ member role {
 
 /* Card */
 
-[card] {
+card {
     text-align: center;
     display: inline-block;
     color: #eee;
     max-width: 180px;
 }
 
-[card]:not(.init) {
+card:not(.init) {
     width: 100%;
 }
 
-[card]:not(.auto) {
+card:not(.auto) {
     width: 25%;
 }
 
-[card] cover {
+card cover {
     background-position: 50%;
     background-size: 170px;
     background-repeat: no-repeat;
@@ -149,36 +149,36 @@ member role {
     cursor: pointer;
 }
 
-[card] cover,
-[card] name,
-[card] cost {
+card cover,
+card name,
+card cost {
     transition: all 0.1s ease-in-out;
 }
 
-[card] cover:hover {
+card cover:hover {
     border-color: rgba(0, 0, 0, 0.1) !important;
     background-size: 180px;
     box-shadow: none;
 }
 
-[card] cover:hover name,
-[card] cover:hover cost {
+card cover:hover name,
+card cover:hover cost {
     opacity: 0;
 }
 
-[card] cover.epic {
+card cover.epic {
     border-color: magenta;
 }
 
-[card] cover.rare {
+card cover.rare {
     border-color: orange;
 }
 
-[card] cover.legendary {
+card cover.legendary {
     border-color: #00ff7e;
 }
 
-[card] name {
+card name {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -188,7 +188,7 @@ member role {
     font-size: 0.8em;
 }
 
-[card] cost {
+card cost {
     background: #e22ee3;
     box-shadow: inset 0 -10px 8px rgba(0, 0, 0, 0.5);
     float: left;

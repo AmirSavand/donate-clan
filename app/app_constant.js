@@ -1,16 +1,17 @@
 "use strict";
 
 /**
- * @name constant
- * @desc App constants
+ * Environment constant
  */
-app.constant("Constant", {
-  env: {
-    api: {
-      royaleClan: "http://127.0.0.1:8000/",
-      clashApi: "http://www.clashapi.xyz/api/"
-    }
-  },
+app.constant("ENV", {
+  ROYALECLAN: "http://127.0.0.1:8000/",
+  CLASHAPI: "http://www.clashapi.xyz/api/"
+});
+
+/**
+ * Main constant
+ */
+app.constant("Main", {
   roles: [
     "member",
     "elder",

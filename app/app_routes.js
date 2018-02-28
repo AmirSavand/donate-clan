@@ -38,7 +38,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   })
 
   .state("app.member", {
-    url: "/m/:name",
+    url: "/m/:tag",
     controller: "MemberController",
     templateUrl: "components/member/member.html",
     params: {

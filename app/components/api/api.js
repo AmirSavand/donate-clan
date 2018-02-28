@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("API", function (Constant, $resource) {
+app.service("API", function (ENV, $resource) {
 
   var apiData = {};
 
@@ -8,19 +8,22 @@ app.service("API", function (Constant, $resource) {
     name: "SignIn",
     endpoint: "auth/" // POST
   }, {
-    name: "Members",
-    endpoint: "members/:name/" // POST, GET, DELETE
-  }, {
     name: "Users",
-    endpoint: "users/:username/" // POST, GET, DELETE
+    endpoint: "users/:username/" // POST - GET - DELETE
+  }, {
+    name: "Member",
+    endpoint: "crapi/member/:tag/" // GET
+  }, {
+    name: "Clan",
+    endpoint: "crapi/clan/" // GET
   }, {
     name: "Cards",
     endpoint: "cards/", // GET
-    clashApi: true
+    api: "CLASHAPI"
   }, {
     name: "RandomDeck",
     endpoint: "random-deck/", // GET
-    clashApi: true
+    api: "CLASHAPI"
   }];
 
   function createResourceObject(attrName, endpoint) {
@@ -33,12 +36,13 @@ app.service("API", function (Constant, $resource) {
 
   function setAPIData() {
     for (var i in endpoints) {
-      // Base API is royale clan
-      var base = Constant.env.api.royaleClan;
-      // Is endpoint for clash api
-      if (endpoints[i].clashApi) {
-        base = Constant.env.api.clashApi;
+      // Clan royale
+      var base = ENV.ROYALECLAN;
+      // Clash api
+      if (endpoints[i].api) {
+        base = ENV[endpoints[i].api];
       }
+      // Resource object
       createResourceObject(endpoints[i].name, base + endpoints[i].endpoint);
     }
   }

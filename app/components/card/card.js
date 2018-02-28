@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Card", function (Constant, $uibModal) {
+app.service("Card", function (Main, $uibModal) {
   return function (id, idName, name, arena, description, elixirCost, order, rarity, type) {
     var self = this;
 
@@ -16,8 +16,8 @@ app.service("Card", function (Constant, $uibModal) {
 
     function constructor() {
       self.image = "http://www.clashapi.xyz/images/cards/" + self.idName + ".png";
-      self.typeSort = Constant.sorts.type[self.type];
-      self.raritySort = Constant.sorts.rarity[self.rarity];
+      self.typeSort = Main.sorts.type[self.type];
+      self.raritySort = Main.sorts.rarity[self.rarity];
     }
 
     this.isInDeck = function (deck) {

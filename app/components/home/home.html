@@ -1,48 +1,66 @@
 <div class="container-fluid cover cover-bg bg-arena">
   <div class="container">
-    <h1><img src="/assets/img/clan.png" width="48"> Royale Clan <small class="o-fade">{{ tag }}</small></h1>
+    <h1>Royale Clan <small class="o-fade">v{{ version }}</small></h1>
     <br>
     <ng-include src="'components/home/description.html'"></ng-include>
   </div>
 </div>
 
-<div class="container s-pad-y">
+<div class="container py-4">
   <div class="row">
-    <!-- Clan members -->
+
+    <!-- Left side -->
     <div class="col-md-6">
-      <div class="card">
-        <div class="card-header s-pad-soft">
-          <i class="fas-fw fa-users"></i> Clan Members
+
+      <!-- Users -->
+      <div class="card mb-3 animated fadeIn" ng-if="users">
+        <div class="card-header bg-dark text-white s-pad-soft">
+          Users <i class="fas fa-fw text-secondary float-right fa-users"></i>
         </div>
-        <div class="card-body s-pad-no">
-          <!-- Member -->
-          <member class="{{ member.get.rarity }}"
-            ui-sref="app.member({ name: member.get.name, member: member })"
-            ng-repeat="member in members | orderBy:'-clan_chest_champion'">
-            <name>{{ member.get.name | underspace }}</name>
-          </member>
+        <div class="list-group list-group-flush">
+          <a class="list-group-item"
+            ui-sref="app.user({username: user.username, user: user})"
+            ng-repeat="user in users">
+            {{ user.username }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Clan members -->
+      <div class="card animated fadeIn" ng-if="members">
+        <div class="card-header bg-dark text-white s-pad-soft">
+          Clan Members <i class="fas fa-fw text-secondary float-right fa-chess"></i>
+        </div>
+        <div class="list-group list-group-flush">
+          <a class="list-group-item"
+            ui-sref="app.member({ tag: member.get.tag, member: member })"
+            ng-if="member.get.role != 'member'"
+            ng-repeat="member in members | orderBy:'-roleRank'">
+            {{ member.get.name | underspace }}
+            <small class="text-secondary float-right">{{ member.get.role | uppercase }}</small>
+          </a>
         </div>
       </div>
     </div>
-    <!-- Random deck -->
+
+    <!-- Right side -->
     <div class="col-md-6">
-      <div class="card">
-        <div class="card-header s-pad-soft">
-          <i class="fas-fw fa-random"></i> Random Deck
+
+      <!-- Random Deck -->
+      <div class="card animated fadeIn" ng-if="deck.cards.length">
+        <div class="card-header bg-dark text-white s-pad-soft">
+          Random Deck <i class="fas fa-fw float-right text-secondary fa-random"></i>
         </div>
         <div class="card-body">
-          <ng-include card ng-repeat="card in deck.cards"
-            src="'components/card/card_include.html'" ng-click="card.view()">
-          </ng-include>
+          <card ng-repeat="card in deck.cards"
+            ng-include="'components/card/card_include.html'"
+            ng-click="card.view()">
+          </card>
         </div>
         <div class="card-footer">
-          <div class="row">
-            <div class="col-sm-12">
-              <button class="btn btn-block btn-warning" ng-disabled="generating" ng-click="generateDeck()">
-                <i class="fas-fw fa-refresh"></i> <b>Next Random Deck</b>
-              </button>
-            </div>
-          </div>
+          <button class="btn btn-lg btn-block btn-dark" ng-disabled="generating" ng-click="generateDeck()">
+            <i class="fas fa-fw fa-sync"></i> New Random Deck
+          </button>
         </div>
       </div>
     </div>

@@ -4,57 +4,46 @@ app.controller("MemberController", function (API, Member, toaster, $scope, $stat
 
   function generateDetailCards(member) {
     $scope.detailCards = [{
-    //   icon: "user-circle",
-    //   color: "primary",
-    //   title: "Role",
-    //   value: member.role
-    // }, {
-    //   icon: "diamond",
-    //   color: "danger",
-    //   title: "Rarity",
-    //   value: member.get.rarity
-    // }, {
-    //   icon: "star-half-o",
-    //   color: "warning",
-    //   title: "Score",
-    //   value: member.get.score
-    // }, {
-    //   icon: "trophy",
-    //   color: "info",
-    //   title: "Leaderboard Score",
-    //   value: member.get.leaderboard_score
-    // }, {
-      icon: "plus-circle",
+      icon: "chess",
+      color: "primary",
+      title: "Role",
+      value: member.role
+    }, {
+      icon: "flag-checkered",
       color: "success",
-      title: "Most Donation",
-      value: "+" + member.get.most_donated
+      title: "Arena",
+      value: member.arena.name
+        // }, {
+        //   icon: "star-half-o",
+        //   color: "warning",
+        //   title: "Score",
+        //   value: member.get.score
     }, {
       icon: "trophy",
       color: "warning",
-      title: "1st Clan Chest",
-      value: member.get.clan_chest_champion
+      title: "Max Trophies",
+      value: member.stats.maxTrophies
+        // }, {
+        //   icon: "plus-circle",
+        //   color: "success",
+        //   title: "Most Donation",
+        //   value: "+" + member.get.most_donated
+        // }, {
+        //   icon: "trophy",
+        //   color: "warning",
+        //   title: "1st Clan Chest",
+        //   value: member.get.clan_chest_champion
     }];
   }
 
   function constructor() {
-    if (!$scope.member) {
-      // Get member from backend
-      API.Members.get({ name: $stateParams.name },
-        function (data) {
-          // Instantiate member
-          $scope.member = new Member(data);
-          generateDetailCards($scope.member);
-        },
-        function () {
-          toaster.error($stateParams.name, "This member doesn't exist, or has been removed!");
-          $state.go("app.home");
-        }
-      );
-    } else {
-      // Load member from param
-      $scope.member = new Member($stateParams.member);
+    
+    $scope.member = $stateParams.member;
+
+    API.Member.get({ tag: $stateParams.tag, keys: "name,tag,clan,arena,stats" }, function (data) {
+      $scope.member = new Member(data);
       generateDetailCards($scope.member);
-    }
+    });
   }
 
   constructor();

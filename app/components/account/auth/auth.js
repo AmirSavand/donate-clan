@@ -16,10 +16,6 @@ app.service("Auth", function (Member, API, toaster, $rootScope) {
 
     if (this.isAuth()) {
       user = JSON.parse(localStorage.getItem("user"));
-      // Instantiate member
-      if (user.member) {
-        user.member = new Member(user.member);
-      }
     }
 
     return user;

@@ -4,16 +4,22 @@ app.controller("HomeController", function (Member, Deck, Card, API, $scope) {
 
   function constructor() {
 
-    $scope.members = [];
-
     $scope.deck = new Deck("Generated Deck", []);
 
+    $scope.members = [];
+
+    $scope.users = [];
+
     // Get members
-    API.Members.get({}, function (data) {
-      angular.forEach(data.results, function (result) {
-        // Instantiate a member
-        $scope.members.push(new Member(result));
+    API.Clan.get({ keys: "members" }, function (data) {
+      angular.forEach(data.members, function (member) {
+        $scope.members.push(new Member(member));
       });
+    });
+
+    // Get users
+    API.Users.get({}, function (data) {
+      $scope.users = data.results;
     });
 
     // Get random deck
@@ -29,13 +35,10 @@ app.controller("HomeController", function (Member, Deck, Card, API, $scope) {
       $scope.deck.cards = [];
 
       angular.forEach(data, function (card) {
-        // Instantiate a card
-        $scope.deck.addCard(
-          new Card(
-            card._id, card.idName, card.name, card.arena, card.description,
-            card.elixirCost, card.order, card.rarity, card.type
-          )
-        );
+        $scope.deck.addCard(new Card(
+          card._id, card.idName, card.name, card.arena, card.description,
+          card.elixirCost, card.order, card.rarity, card.type
+        ));
       });
     });
   };
