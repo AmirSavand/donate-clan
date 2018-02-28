@@ -1,14 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
   <div class="container">
+    
     <!-- Brand -->
     <a class="navbar-brand" ui-sref="app.home">Royale Clan</a>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
     <!-- Links -->
     <div class="collapse navbar-collapse" id="navbar">
+
+      <!-- Left -->
       <ul class="navbar-nav mr-auto"></ul>
+      
+      <!-- Right -->
       <ul class="navbar-nav">
+
         <!-- Auth -->
         <li class="nav-item dropdown" ng-if="auth.isAuth()">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -24,10 +33,12 @@
             </a>
           </div>
         </li>
+
         <!-- Sign up -->
         <li class="nav-item" ui-sref-active="active" ng-if="!auth.isAuth()">
           <a class="nav-link" ui-sref="app.signup">Register</a>
         </li>
+        
         <!-- Sign in -->
         <li class="nav-item dropdown" ng-if="auth.isAuth()">
         <li class="nav-item dropdown" ng-if="!auth.isAuth()">
