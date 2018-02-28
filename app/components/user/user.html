@@ -1,39 +1,74 @@
 <div class="container s-mar-y">
   <div class="row">
     <div class="col-md-4">
-
       <div class="card">
         <div class="card-body bg-dark text-white text-center">
+
+          <!-- Picture -->
           <div class="user-picture-wrapper">
             <div class="user-picture" style="background-image: url('{{ user.picture || 'assets/img/avatar.png' }}')"></div>
           </div>
           <br>
+          <!-- User name and icon -->
           <h1>
-            <small><i class="fas-user-secret text-warning" title="{{ user.username }} is an admin"></i></small>
+            <small ng-if="user.is_admin">
+              <i class="fas fa-user-secret text-warning" title="{{ user.username }} is an admin"></i>
+            </small>
             {{ user.username }}
           </h1>
           <hr>
-          <p class="o-fade-soft">
-            {{ user.about || "Nothing to say..." }}
-            <small ng-if="user.link">
-              <br><a ng-href="{{ user.link }}" target="_blank">{{ user.link }}</a>
-            </small>
-          </p>
+          <!-- About -->
+          <p class="o-fade-soft">{{ user.about || "Nothing to say..." }}</p>
         </div>
-        <div class="card-body">
-          <p ng-if="user.member">
-            <span class="text-secondary">Membership:</span>
+
+        <!-- Info -->
+        <div class="list-group list-group-flush">
+        
+          <!-- Membership -->
+          <div class="list-group-item" ng-if="user.member">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-chess"></i> Membership:
+            </span>
             <a ui-sref="app.member({tag: user.member})" class="float-right">
-              {{ user.member }}
+              #{{ user.member }}
             </a>
-          </p>
-          <p class="my-0">
-            <span class="text-secondary">Nationality:</span>
+          </div>
+        
+          <!-- Website link -->
+          <div class="list-group-item" ng-if="user.link">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-link"></i> Link:
+            </span>
+            <a ng-href="{{ user.link }}" target="_blank" class="float-right" title="{{ user.link }}">
+              {{ user.username }}'s Link
+            </a>
+          </div>
+
+          <!-- Nationality -->
+          <div class="list-group-item">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-globe"></i> Nationality:
+            </span>
             <span class="float-right">{{ user.nationality || "Planet" }}</span>
-          </p>
+          </div>
+
+          <!-- Last Seen -->
+          <div class="list-group-item">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-sign-in-alt"></i> Last Seen:
+            </span>
+            <span class="float-right">{{ user.last_login | date:'dd MMM' }}</span>
+          </div>
+
+          <!-- Date Joined -->
+          <div class="list-group-item">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-calendar-alt"></i> Date Joined:
+            </span>
+            <span class="float-right">{{ user.date_joined | date:'dd MMM yyyy' }}</span>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
