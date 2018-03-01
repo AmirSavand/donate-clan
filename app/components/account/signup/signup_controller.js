@@ -9,8 +9,8 @@ app.controller("SignUpController", function (Auth, API, $scope, $state) {
     API.Users.save(form.data,
       function () {
         // Sign in
-        Auth.signIn(form.data.username, form.data.password, form, function (user) {
-          $state.go("app.user", { username: form.data.username, user: Auth.getAuth() });
+        Auth.signIn(form.data.username, form.data.password, form, function () {
+          $state.go("app.settings");
         });
       },
       function (data) {
