@@ -70,9 +70,22 @@
           <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
         <div class="card-footer">
-          <button class="btn btn-lg btn-block btn-dark" ng-disabled="generating" ng-click="generateDeck()">
-            <i class="fas fa-fw fa-sync"></i> New Random Deck
-          </button>
+          <div class="row">
+            <!-- New random deck -->
+            <div class="col-lg-9 my-1">
+              <button class="btn btn-lg btn-block btn-info"
+                ng-disabled="generating" ng-click="generateDeck()">
+                <i class="fas fa-fw fa-sync"></i> New Random Deck
+              </button>
+            </div>
+            <!-- Edit deck -->
+            <div class="col-lg-3 my-1">
+              <button class="btn btn-lg btn-block btn-success" title="Edit this deck"
+                ng-disabled="generating" ui-sref="app.deck-new({deck: deck})">
+                <i class="fas fa-fw fa-edit"></i> <span class="d-lg-none">Edit Deck</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
