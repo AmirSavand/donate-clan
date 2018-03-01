@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("DeckNewController", function (Deck, Card, DeckList, toaster,
+app.controller("DeckNewController", function (Main, Deck, Card, DeckList, toaster,
   $scope, $state, $stateParams, $http, $window) {
 
   function setSlots() {
@@ -65,6 +65,8 @@ app.controller("DeckNewController", function (Deck, Card, DeckList, toaster,
     $scope.slots = new Array(8);
 
     $scope.orderBy = "elixirCost";
+
+    $scope.deckTypes = Main.deck.type;
 
     $scope.filters = [{
       key: "elixirCost",
