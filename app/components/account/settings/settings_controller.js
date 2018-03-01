@@ -26,6 +26,7 @@ app.controller("SettingsController", function (Auth, API, $scope, $state) {
         form.loading = false;
         form.error = null;
         form.data = data;
+        toaster.info("Updated", "Your pofile settings are updated.");
       },
       function (data) {
         form.loading = false;
