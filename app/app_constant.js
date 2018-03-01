@@ -30,5 +30,17 @@ app.constant("Main", {
       Spell: 1,
       Building: 2
     }
+  },
+  deck: {
+    type: [
+      "Deck Type (None)",
+      "Cycle",
+      "Spell Bait",
+      "Beatdown",
+      "Spawner",
+      "Three Crowns",
+      "Control",
+      "Siege"
+    ]
   }
 });
