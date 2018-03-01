@@ -55,13 +55,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   // .state("app.deck-list", {
   //   url: "/decks/",
   //   controller: "DeckListController",
-  //   templateUrl: "components/deck_list/deck_list.html"
+  //   templateUrl: "components/deck/deck_list/deck_list.html"
   // })
 
   .state("app.deck-new", {
     url: "/build/:index",
     controller: "DeckNewController",
-    templateUrl: "components/deck_new/deck_new.html",
+    templateUrl: "components/deck/deck_new/deck_new.html",
     params: {
       deck: null
     }
