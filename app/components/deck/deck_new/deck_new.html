@@ -1,101 +1,105 @@
-<div class="container animated fadeIn">
-  <div class="row">
-    <!-- New Deck -->
-    <div class="col-md-8">
-      <div class="panel panel-primary bg-dark">
-        <!-- Header -->
-        <div class="panel-heading">
-          <h3 class="panel-title">
+<div class="container-fluid bg-pattern py-3">
+  <div class="container animated fadeIn">
+    <div class="row">
+      <!-- New Deck -->
+      <div class="col-md-8">
+        <div class="card my-3 bg-asher text-white">
+          <!-- Header -->
+          <div class="card-header bg-info py-4">
             {{ deck.name || "Unnamed" }}
-            <div class="label label-info float-right"
+            <!-- Avg elixir cost -->
+            <div class="badge badge-dark float-right"
               uib-tooltip="Avg Elixir Cost" tooltip-placement="left">
               {{ deck.getAvgElixirCost() || 0 | number:1 }}
-              <i class="fas-tint init"></i>
-            </div>
-          </h3>
-        </div>
-        <!-- Empty slots -->
-        <div class="panel-body slots-wrapper">
-          <div class="row center-block slots">
-            <div card class="col-xs-6 col-md-3 col-sm-3 col-xs-6 init auto"
-              ng-repeat="card in slots track by $index">
-              <ng-include src="'components/card/card_include.html'"></ng-include>
+              <i class="fas fa-tint init"></i>
             </div>
           </div>
-          <!-- Cards -->
-          <div class="row center-block">
-            <div card class="col-xs-6 col-md-3 col-sm-3 col-xs-6 init auto animated zoomInUp"
-              ng-repeat="card in deck.cards track by $index">
-              <ng-include
+          <!-- Empty slots -->
+          <div class="card-body bg-pattern slots-wrapper">
+            <div class="row center-block slots">
+              <div class="col-xs-6 col-md-3 col-sm-3 col-xs-6"
+                ng-repeat="card in slots track by $index">
+                <card class="auto" ng-include="'components/card/card_include.html'"></card>
+              </div>
+            </div>
+            <!-- Cards -->
+            <div class="row center-block">
+              <card class="col-xs-6 col-md-3 col-sm-3 col-xs-6 init auto animated zoomInUp"
+                ng-repeat="card in deck.cards track by $index"
                 ng-click="deck.removeCard(card)"
-                src="'components/card/card_include.html'">
-              </ng-include>
+                ng-include="'components/card/card_include.html'">
+              </card>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Deck info -->
-    <div class="col-md-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title"><i class="fas-edit"></i> Options</h3>
-        </div>
-        <div class="panel-body">
-          <!-- Deck name -->
-          <div class="form-group">
-            <input type="text" ng-model="deck.name" class="form-control" placeholder="Deck name">
+      <!-- Deck info -->
+      <div class="col-md-4">
+        <div class="card bg-asher text-light my-3">
+          <div class="card-header bg-info py-4">
+            Options <i class="fas float-right fa-edit"></i>
           </div>
-          <!-- Generate button -->
-          <button class="btn btn-warning btn-lg btn-block"
-            ng-disabled="generating"
-            ng-click="generateDeck()">
-            <i class="fas fa-fw fa-refresh"></i> Generate Deck
-          </button>
-          <!-- Save button -->
-          <button class="btn btn-success btn-lg btn-block"
-            ng-disabled="generating" ng-click="save()" ng-if="!index">
-            <i class="fas fa-fw fa-check"></i> Save Deck
-          </button>
-          <!-- Update button -->
-          <button class="btn btn-info btn-lg btn-block"
-            ng-disabled="generating" ng-click="save()" ng-if="index">
-            <i class="fas fa-fw fa-check"></i> Update Deck
-          </button>
+          <div class="card-body bg-asher">
+            <!-- Deck name -->
+            <div class="form-group">
+              <input type="text" ng-model="deck.name" placeholder="Deck name"
+                class="form-control">
+            </div>
+            <!-- Deck type -->
+            <div class="form-group">
+              <select class="form-control" ng-model="deck.type">
+                <option ng-value="$index" ng-repeat="type in deckTypes">
+                  {{ deckTypes[$index] }}
+                </option>
+              </select>
+            </div>
+            <!-- Generate button -->
+            <button class="btn btn-info btn btn-block"
+              ng-disabled="generating" ng-click="generateDeck()">
+              <i class="fas fa-fw fa-sync"></i> Generate Deck
+            </button>
+            <!-- Save button -->
+            <button class="btn btn-success btn btn-block"
+              ng-disabled="generating" ng-click="save()" ng-if="!index">
+              <i class="fas fa-fw fa-check"></i> Save Deck
+            </button>
+            <!-- Update button -->
+            <button class="btn btn-info btn btn-block"
+              ng-disabled="generating" ng-click="save()" ng-if="index">
+              <i class="fas fa-fw fa-check"></i> Update Deck
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- List of available cards -->
-  <div class="panel panel-success bg-dark">
-    <div class="panel-heading">
-      <!-- Header -->
-      <h3 class="panel-title">
+    <!-- List of available cards -->
+    <div class="card my-3 bg-asher text-white">
+      <div class="card-header bg-success py-4">
         <!-- Title -->
-        <span>Available Cards <b ng-if="cards.length">- {{ cards.length }}</b></span>
+        <span style="font-size: 1.5rem">
+          Available Cards &bull;
+          <span ng-if="cards.length">{{ cards.length }}</span>
+        </span>
         <!-- Filter buttons -->
-        <div class="btn-group float-right" style="margin-top: -8px">
-          <label class="btn btn-success t-bold"
-            ng-repeat="filter in filters"
-            ng-model="$parent.orderBy"
-            uib-btn-radio="filter.key">
-            {{ filter.label }}
-          </label>
-        </div>
-      </h3>
-    </div>
-    <!-- Card list -->
-    <div class="panel-body">
-      <div class="row center-block">
-        <div class="col-xs-6 col-sm-3 col-lg-2"
-          ng-repeat="card in cards | orderBy: orderBy track by $index">
-          <ng-include card class="auto animated bounceIn"
-            ng-class="{'zoomOutUp cur-no': card.isInDeck(deck)}"
-            src="'components/card/card_include.html'"
-            ng-click="deck.addCard(card)">
-          </ng-include>
+        <div class="btn-group float-right">
+          <button class="btn btn-light mb-0" ng-repeat="filter in filters"
+            ng-model="$parent.orderBy" uib-btn-radio="filter.key">
+            {{ filter.label | uppercase }}
+          </button>
         </div>
       </div>
-    </div>
+      <!-- Card list -->
+      <div class="card-body">
+        <div class="row center-block">
+          <div class="col-xs-6 col-sm-3 col-lg-2"
+            ng-repeat="card in cards | orderBy: orderBy track by $index">
+            <card class="auto animated bounceIn"
+              ng-class="{'zoomOutUp cur-no': card.isInDeck(deck)}"
+              ng-include="'components/card/card_include.html'"
+              ng-click="deck.addCard(card)">
+            </card>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
