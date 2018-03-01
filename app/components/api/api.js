@@ -24,6 +24,9 @@ app.service("API", function (ENV, $resource) {
     name: "RandomDeck",
     endpoint: "random-deck/", // GET
     api: "CLASHAPI"
+  }, {
+    name: "Settings",
+    endpoint: "settings/" // PUT
   }];
 
   function createResourceObject(attrName, endpoint) {
