@@ -50,7 +50,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     params: {
       member: null
     }
-  });
+  })
 
   // .state("app.deck-list", {
   //   url: "/decks/",
@@ -58,14 +58,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   //   templateUrl: "components/deck_list/deck_list.html"
   // })
 
-  // .state("app.deck-new", {
-  //   url: "/build/:index",
-  //   controller: "DeckNewController",
-  //   templateUrl: "components/deck_new/deck_new.html",
-  //   params: {
-  //     deck: null
-  //   }
-  // });
+  .state("app.deck-new", {
+    url: "/build/:index",
+    controller: "DeckNewController",
+    templateUrl: "components/deck_new/deck_new.html",
+    params: {
+      deck: null
+    }
+  });
 
   $urlRouterProvider.otherwise("/");
 });
