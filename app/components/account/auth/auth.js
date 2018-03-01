@@ -30,7 +30,7 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
   this.setAuth = function (user, token) {
     localStorage.setItem("user", JSON.stringify(user));
     if (token) {
-      localStorage.setItem("JWT", JSON.stringify(token));
+      localStorage.setItem("JWT", token);
     }
     $rootScope.$broadcast("royaleClan.Auth:setAuth");
   };

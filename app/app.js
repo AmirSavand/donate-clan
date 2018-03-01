@@ -14,9 +14,10 @@ var app = angular.module("royaleClan", [
 /**
  * @name config
  */
-app.config(function ($qProvider, $resourceProvider, $locationProvider, uibDropdownConfig) {
+app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, uibDropdownConfig) {
   $qProvider.errorOnUnhandledRejections(false);
   $resourceProvider.defaults.stripTrailingSlashes = false;
+  $httpProvider.interceptors.push("AuthInterceptor");
   $locationProvider.hashPrefix("");
   uibDropdownConfig.openClass = "show";
 });

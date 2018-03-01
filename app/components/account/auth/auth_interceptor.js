@@ -11,9 +11,9 @@ app.factory("AuthInterceptor", function ($rootScope, $q, ENV) {
    * @returns {object}
    */
   function request(config) {
-    var token = localStorage.getitem("JWT");
+    var token =  localStorage.getItem("JWT");
 
-    if (config.url.indexOf(ENV.apiEndpoint) === 0 && token) {
+    if (config.url.indexOf(ENV.ROYALECLAN) === 0 && token) {
       config.headers.Authorization = "JWT " + token;
     }
 
