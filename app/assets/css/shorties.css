@@ -67,3 +67,14 @@
 .t-ws {
     white-space: pre-wrap;
 }
+
+
+/* Backgrounds */
+
+.bg-darker {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bg-asher {
+    background-color: rgba(30, 30, 30, 0.5);
+}

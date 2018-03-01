@@ -17,8 +17,7 @@ button,
 /* Button */
 
 .btn-block {
-    font-weight: bold;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
 
 
@@ -302,4 +301,74 @@ card cost {
     box-sizing: content-box;
     border-radius: 100%;
     border: 6px solid rgba(0, 0, 0, 0.5);
+}
+
+
+/* Slots */
+
+.slots {
+    position: absolute;
+}
+
+.slots cost {
+    display: none;
+}
+
+.slots cover {
+    border-color: saddlebrown;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: none;
+}
+
+.slots-wrapper {
+    min-height: 414px;
+}
+
+
+/* Inline Cards */
+
+.inline-cards-item {
+    display: inline-block;
+    width: 35%;
+    margin: 2px 0;
+    margin-right: -14%;
+}
+
+.inline-cards-item img {
+    max-width: 100%;
+}
+
+
+/* Media */
+
+@media screen and (max-width: 767px) {
+    .slots-wrapper {
+        min-height: 798px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    body:not(.pattern),
+    .cover {
+        background-size: cover;
+        background-position: center;
+        height: auto;
+    }
+}
+
+
+/* Tooltip */
+
+[uib-tooltip] {
+    cursor: pointer;
+}
+
+.tooltip.in {
+    opacity: 1;
+}
+
+.tooltip .tooltip-inner {
+    font-weight: bold;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    color: #fff;
 }
