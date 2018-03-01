@@ -1,7 +1,7 @@
 "use strict";
 
 app.service("Deck", function (Card) {
-  return function (name, cards) {
+  return function (name, cards, type) {
 
     /**
      * @type {string}
@@ -14,18 +14,29 @@ app.service("Deck", function (Card) {
     this.cards = cards;
 
     /**
+     * @type {number}
+     */
+    this.type = type || 0;
+
+    /**
+     * @type {float}
+     */
+    this.avgElixir = 0.0;
+
+    /**
      * @type {function}
      * @returns {float}
      */
     this.getAvgElixirCost = function () {
-      var aec = 0.0;
+      this.avgElixir = 0.0;
       for (var i in this.cards) {
-        aec += this.cards[i].elixirCost;
+        this.avgElixir += this.cards[i].elixirCost;
         if (this.cards[i].idName === "mirror") {
-          aec += 2;
+          this.avgElixir += 2;
         }
       }
-      return aec / this.cards.length;
+      this.avgElixir /= this.cards.length;
+      return this.avgElixir;
     };
 
     /**
@@ -52,14 +63,18 @@ app.service("Deck", function (Card) {
      * @returns {object}
      */
     this.export = function () {
-      var deck = {
-        name: this.name,
-        cards: []
-      };
+      var exportedCards = [];
+
       for (var i in this.cards) {
-        deck.cards.push(this.cards[i].export());
+        exportedCards.push(this.cards[i].export());
       }
-      return deck;
+
+      return {
+        name: this.name,
+        type: this.type,
+        avg_elixir: this.avgElixir,
+        cards: exportedCards.join(" "),
+      };
     };
 
     /**
