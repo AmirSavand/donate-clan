@@ -60,3 +60,10 @@
 .s-pad-bottom {
     padding-bottom: 50px;
 }
+
+
+/* Texts */
+
+.t-ws {
+    white-space: pre-wrap;
+}

@@ -13,7 +13,7 @@
     <div class="col-md-6">
 
       <!-- Users -->
-      <div class="card mb-3 animated fadeIn" ng-if="users">
+      <div class="card mb-3">
         <div class="card-header bg-dark text-white s-pad-soft">
           Users <i class="fas fa-fw text-secondary float-right fa-users"></i>
         </div>
@@ -24,10 +24,14 @@
             {{ user.username }}
           </a>
         </div>
+        <!-- Loading -->
+        <div class="card-body text-center py-5" ng-if="!users">
+          <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
+        </div>
       </div>
 
       <!-- Clan members -->
-      <div class="card animated fadeIn" ng-if="members">
+      <div class="card">
         <div class="card-header bg-dark text-white s-pad-soft">
           Clan Members <i class="fas fa-fw text-secondary float-right fa-chess"></i>
         </div>
@@ -40,6 +44,10 @@
             <small class="text-secondary float-right">{{ member.get.role | uppercase }}</small>
           </a>
         </div>
+        <!-- Loading -->
+        <div class="card-body text-center py-5" ng-if="!members">
+          <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
+        </div>
       </div>
     </div>
 
@@ -47,7 +55,7 @@
     <div class="col-md-6">
 
       <!-- Random Deck -->
-      <div class="card animated fadeIn" ng-if="deck.cards.length">
+      <div class="card">
         <div class="card-header bg-dark text-white s-pad-soft">
           Random Deck <i class="fas fa-fw float-right text-secondary fa-random"></i>
         </div>
@@ -56,6 +64,10 @@
             ng-include="'components/card/card_include.html'"
             ng-click="card.view()">
           </card>
+        </div>
+        <!-- Loading -->
+        <div class="card-body text-center py-5" ng-if="!deck.cards.length">
+          <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
         <div class="card-footer">
           <button class="btn btn-lg btn-block btn-dark" ng-disabled="generating" ng-click="generateDeck()">

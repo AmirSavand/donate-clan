@@ -6,10 +6,6 @@ app.controller("HomeController", function (Member, Deck, Card, API, $scope) {
 
     $scope.deck = new Deck("Generated Deck", []);
 
-    $scope.members = [];
-
-    $scope.users = [];
-
     // Get members
     API.Clan.get({ keys: "members" }, function (data) {
       angular.forEach(data.members, function (member) {
