@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("SettingsController", function (Auth, API, $scope, $state) {
+app.controller("SettingsController", function (Auth, API, toaster, $scope, $state) {
 
   var user = Auth.getAuth();
 
@@ -21,7 +21,7 @@ app.controller("SettingsController", function (Auth, API, $scope, $state) {
   $scope.update = function (form) {
     form.loading = true;
 
-    API.Users.put({ username: user.username }, form.data,
+    API.Settings.put({}, form.data,
       function (data) {
         form.loading = false;
         form.error = null;
