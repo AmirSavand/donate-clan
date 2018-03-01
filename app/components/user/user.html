@@ -18,7 +18,7 @@
           </h1>
 
           <!-- About -->
-          <p class="o-fade-soft">{{ user.about || "Nothing to say..." }}</p>
+          <p class="o-fade-soft t-ws">{{ user.about || "Nothing to say..." }}</p>
         </div>
 
         <!-- Info -->
@@ -50,14 +50,6 @@
               <i class="fas fa-fw o-fade fa-globe"></i> Nationality:
             </span>
             <span class="float-right">{{ user.nationality || "Planet" }}</span>
-          </div>
-
-          <!-- Last Seen -->
-          <div class="list-group-item" ng-if="user.last_login">
-            <span class="text-secondary">
-              <i class="fas fa-fw o-fade fa-sign-in-alt"></i> Last Seen:
-            </span>
-            <span class="float-right">{{ user.last_login | date:'dd MMM' }}</span>
           </div>
 
           <!-- Date Joined -->
