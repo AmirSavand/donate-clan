@@ -11,8 +11,8 @@ app.service("API", function (ENV, $resource) {
     name: "Users",
     endpoint: "users/:username/" // POST - GET - DELETE
   }, {
-    name: "Member",
-    endpoint: "crapi/member/:tag/" // GET
+    name: "Decks",
+    endpoint: "decks/:id/" // POST - GET - DELETE
   }, {
     name: "Clan",
     endpoint: "crapi/clan/" // GET
