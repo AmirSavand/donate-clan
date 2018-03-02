@@ -1,44 +1,60 @@
-<div class="container">
+<div class="container py-4">
+
+  <!-- Header -->
+  <h1 class="text-dark my-2">
+
+    <!-- Title -->
+    <span>Latest decks</span>
+
+    <!-- By user -->
+    <span ng-if="params.username">
+      by <a ui-sref="app.user({username: params.username})" class="text-primary">{{ params.username }}</a>
+    </span>
+  </h1>
+
+  <hr>
+
+  <!-- Decks -->
   <div class="row" vertilize-container>
-    <div class="col-md-4 col-sm-6" ng-repeat="deck in decks | reverse">
-      <div class="panel panel-warning animated bounce"
-        style="background: rgba(0, 0, 0, 0.5)" >
-        <div class="panel-heading">
-          <b class="t-larger">{{ deck.name }}</b>
-          <div class="float-right">
-            <div class="label label-info" style="margin-top: 5px"
-              uib-tooltip="Avg Elixir Cost" tooltip-placement="left">
-              <span class="t-larger">{{ deck.avgElixir || 0 }}</span>
-              <i class="fas fa-tint init"></i>
-            </div>
-          </div>
-        </div>
-        <div class="panel-body" vertilize>
-          <div class="inline-cards">
-            <div class="inline-cards-item" ng-repeat="card in deck.cards">
-              <img ng-src="{{ card.image }}" ng-click="card.view()" onload>
-            </div>
-          </div>
-          <br>
-        </div>
-        <div class="panel-footer bg-dark">
-          <button title="Delete {{ deck.name }}"
-            class="btn btn-default o-fade-hard o-fade-hover"
-            ng-click="remove(deck)">
-            <i class="fas fa-fw fa-trash"></i>
+    <div class="col-lg-4 col-md-6" ng-repeat="deck in decks | reverse">
+      <div class="card bg-dark text-white my-3">
+
+        <!-- Header -->
+        <div class="card-header py-3">
+
+          <!-- AEC -->
+          <span class="o-fade-soft"><i class="fas fa-tint"></i> {{ deck.getAvgElixir() || 0 }}</span>
+
+          <!-- Name (link) -->
+          <a href="#" class="text-white on-dark">{{ deck.name }}</a>
+
+          <!-- Options -->
+          <button class="btn btn-warning btn-sm float-right" style="margin: -4px">
+            <i class="fas fa-chevron-down"></i>
           </button>
-          <a class="btn btn-warning float-right"
-            ui-sref="app.deck-new({index: deck.index})">
-            <i class="fas fa-fw fa-arrow-right"></i>
-          </a>
         </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 o-fade-soft">
-      <div class="panel panel-default animated bounce o-fade o-fade-hover"
-        style="background: rgba(0, 0, 0, 0.5)">
-        <div class="panel-body text-center" ui-sref="app.deck-new" style="padding: 50px 0">
-          <i class="fas fa-5x fa-plus text-warning"></i>
+
+        <!-- Cards -->
+        <div class="card-body bg-pattern vertilize p-2">
+          <div class="inline-cards">
+            <card class="inline-cards-item auto init no-name no-cost no-cover-hover"
+              ng-repeat="card in deck.cards"
+              ng-include="'components/card/card_include.html'"
+              ng-click="card.view()">
+            </card>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="card-footer">
+
+          <!-- Type -->
+          <span ng-if="deck.type > 0">{{ deck.getType() }} deck &bull;</span>
+
+          <!-- User -->
+          <a ui-sref="app.user({username: deck.user })" class="text-info">
+            By {{ deck.user }}
+          </a>
         </div>
       </div>
     </div>
