@@ -17,6 +17,9 @@ app.service("API", function (ENV, $resource) {
     name: "Clan",
     endpoint: "crapi/clan/" // GET
   }, {
+    name: "Member",
+    endpoint: "crapi/member/:tag/" // GET
+  }, {
     name: "Cards",
     endpoint: "cards/", // GET
     api: "CLASHAPI"
