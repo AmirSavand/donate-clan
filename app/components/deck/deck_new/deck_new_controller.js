@@ -139,21 +139,36 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
     });
   };
 
+  /**
+   * Save the deck
+   */
   $scope.save = function () {
+
+    // Check for at least 1 card
     if (!$scope.deck.cards.length) {
-      return toaster.error("Unable to Save", "You need to select atleast 1 card.");
+      return toaster.error("Unable to Save", "You need to select at least 1 card.");
     }
-    DeckList.save($scope.deck, $scope.index);
-    if (!$scope.index) {
+
+    // Set default deck type if not set
+    if ($scope.deck.type === -1) {
+      $scope.deck.type = $scope.deckTypes.indexOf("None");
+    }
+
+    // Save the deck
+    API.Decks.save($scope.deck.export(), function (data) {
       toaster.success("Awesome", $scope.deck.name + " is in your collection now.");
-    } else {
-      toaster.info("Updated", $scope.deck.name + " is updated.");
-    }
-    $state.go("app.deck-list");
+      $state.go("app.deck-list", { username: data.user });
+    });
   };
 
+  /**
+   * Update dynamic with of slots when window.resize
+   */
   angular.element($window).bind("resize", updateSlotsElementWith);
 
+  /**
+   * Reload cards when they are updated after loading them
+   */
   $scope.$on("royaleClan.MainController:loadedCards", function (event, data) {
     $scope.localCards = data;
     loadCardsLocally();
