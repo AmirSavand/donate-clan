@@ -26,14 +26,32 @@ app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProv
  * @name run
  */
 app.run(function (Auth, toaster, $state, $window, $rootScope, $anchorScroll) {
+
+  /**
+   * @type {string}
+   */
   $rootScope.version = "1.0.0";
+
+  /**
+   * @type {string}
+   */
   $rootScope.tag = "#2Y2C9RCJ";
+
+  /**
+   * @type {string}
+   */
   $rootScope.feedback = "mailto:amir@savandbros.com?Subject=Royale Clan v" + $rootScope.version;
 
+  /**
+   * Page loaded completely
+   */
   $rootScope.$on("$viewContentLoaded", function () {
     $anchorScroll();
   });
 
+  /**
+   * Page is starting to change
+   */
   $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
 
     // Check authentication for state
