@@ -223,6 +223,8 @@ card cost {
 
 .modal-content {
     margin-top: 200px;
+    background: none;
+    border: none;
 }
 
 
