@@ -57,7 +57,7 @@
       <!-- Random Deck -->
       <div class="card my-4">
         <div class="card-header bg-dark text-white py-4">
-          Random Deck &bull; {{ deck.avgElixir }} <i class="fas fa-fw float-right o-fade fa-random"></i>
+          Random Deck &bull; {{ deck.getAvgElixir() }} <i class="fas fa-fw float-right o-fade fa-random"></i>
         </div>
         <div class="card-body">
           <card ng-repeat="card in deck.cards"
