@@ -35,7 +35,7 @@
         <div class="card-header bg-dark text-white s-pad-soft">
           Clan Members <i class="fas fa-fw text-secondary float-right fa-chess"></i>
         </div>
-        <div class="list-group list-group-flush">
+        <div class="list-group list-group-flush" ng-if="members.length">
           <a class="list-group-item"
             ui-sref="app.member({ tag: member.get.tag, member: member })"
             ng-if="member.get.role != 'member'"
@@ -45,7 +45,7 @@
           </a>
         </div>
         <!-- Loading -->
-        <div class="card-body text-center py-5" ng-if="!members">
+        <div class="card-body text-center py-5" ng-if="!members.length">
           <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
       </div>
