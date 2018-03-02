@@ -46,6 +46,11 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, DeckList, t
   function constructor() {
 
     /**
+     * Saving (new deck) or updating (existing deck) a deck
+     */
+    $scope.isNewDeck = true;
+
+    /**
      * Given deck by the route param
      * Used for editing a deck from outside
      *
