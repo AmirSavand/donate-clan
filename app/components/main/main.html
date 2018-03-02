@@ -19,6 +19,11 @@
         <li class="nav-item" ui-sref-active="active">
           <a class="nav-link" ui-sref="app.deck-new">Build</a>
         </li>
+
+        <!-- Decks -->
+        <li class="nav-item" ui-sref-active="active">
+          <a class="nav-link" ui-sref="app.deck-list({username: null})">Decks</a>
+        </li>
       </ul>
       
       <!-- Right -->
@@ -30,12 +35,22 @@
             {{ user.username }}
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" ui-sref="app.user({username: user.username, user: user})">
+            <!-- Profile -->
+            <a class="dropdown-item" ui-sref-active="active"
+              ui-sref="app.user({username: user.username, user: user})">
               <i class="fas fa-fw fa-user-circle"></i> Profile
             </a>
-            <a class="dropdown-item" ui-sref="app.settings">
+            <!-- Decks -->
+            <a class="dropdown-item" ui-sref-active="active"
+              ui-sref="app.deck-list({username: user.username})">
+              <i class="fas fa-fw fa-cube"></i> Decks
+            </a>
+            <!-- Settings -->
+            <a class="dropdown-item" ui-sref-active="active"
+              ui-sref="app.settings">
               <i class="fas fa-fw fa-cog"></i> Settings
             </a>
+            <!-- Sign out -->
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" ng-click="auth.unAuth()">
               <i class="fas fa-fw fa-sign-out-alt"></i> Sign Out
