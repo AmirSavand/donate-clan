@@ -77,7 +77,7 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
      *
      * @type {Deck}
      */
-    $scope.deck = new Deck("My New Deck", [], -1);
+    $scope.deck = new Deck("My New Deck", []);
 
     /**
      * Number of slots for viewing purpose
