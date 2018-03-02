@@ -1,12 +1,20 @@
 "use strict";
 
-app.controller("DeckNewController", function (Main, Deck, Card, DeckList, toaster,
+app.controller("DeckNewController", function (API, Main, Deck, Card, DeckList, toaster,
   $scope, $state, $stateParams, $http, $window) {
 
-  function setSlots() {
+  /**
+   * Set dynamic width of card slots
+   */
+  function updateSlotsElementWith() {
     angular.element(".slots").width(angular.element(".slots + .row").width());
   }
 
+  /**
+   * Move all the cards from available cards into the deck
+   *
+   * @param {Array<Card>} cards
+   */
   function syncDeckWithCards(cards) {
     // Loop in the generated deck
     angular.forEach(cards, function (data) {
@@ -21,24 +29,10 @@ app.controller("DeckNewController", function (Main, Deck, Card, DeckList, toaste
     });
   }
 
-  function setupViewingDeck() {
-    // If viewing/editing a deck
-    if ($scope.index) {
-      var viewingDeck = DeckList.get($scope.index);
-      $scope.deck = new Deck().import(viewingDeck.name, viewingDeck.cards);
-
-      // Setup cards to replace from availables
-      var cardsToReplace = $scope.deck.cards;
-      $scope.deck.cards = [];
-      syncDeckWithCards(cardsToReplace);
-    }
-
-    if ($scope.preDeck) {
-      syncDeckWithCards($scope.preDeck.cards);
-    }
-  }
-
-  function importLocalCards() {
+  /**
+   * Import cards from localStorage
+   */
+  function loadCardsLocally() {
     angular.forEach($scope.localCards, function (card) {
       $scope.cards.push(
         new Card(
@@ -47,27 +41,58 @@ app.controller("DeckNewController", function (Main, Deck, Card, DeckList, toaste
         )
       );
     });
-    setupViewingDeck();
   }
 
   function constructor() {
 
-    $scope.index = DeckList.get($stateParams.index) ? $stateParams.index : null;
-
+    /**
+     * Given deck by the route param
+     * Used for editing a deck from outside
+     *
+     * @type {Deck}
+     */
     $scope.preDeck = $stateParams.deck;
 
+    /**
+     * Available cards to build deck with
+     *
+     * @type {Array<Card>}
+     */
     $scope.cards = [];
 
+    /**
+     * Available cards in localStorage
+     *
+     * @type {Array<object>}
+     */
     $scope.localCards = localStorage.cards ? JSON.parse(localStorage.cards) : [];
 
+    /**
+     * Current deck being built
+     *
+     * @type {Deck}
+     */
     $scope.deck = new Deck("My New Deck", []);
 
+    /**
+     * Number of slots for viewing purpose
+     *
+     * @type {Array}
+     */
     $scope.slots = new Array(8);
 
-    $scope.orderBy = "elixirCost";
-
+    /**
+     * All type of decks
+     *
+     * @type {Array<string>}
+     */
     $scope.deckTypes = Main.deck.type;
 
+    /**
+     * Filters for available cards
+     *
+     * @type {Array}
+     */
     $scope.filters = [{
       key: "elixirCost",
       label: "Elixir"
@@ -79,16 +104,25 @@ app.controller("DeckNewController", function (Main, Deck, Card, DeckList, toaste
       label: "Type"
     }];
 
-    importLocalCards();
+    /**
+     * Order of available cards
+     *
+     * @type {string}
+     */
+    $scope.orderBy = "elixirCost";
 
-    setSlots();
+    loadCardsLocally();
+    updateSlotsElementWith();
   }
 
+  /**
+   * Generate random deck via API
+   */
   $scope.generateDeck = function () {
     $scope.generating = true;
-    $http.get("http://www.clashapi.xyz/api/random-deck").then(function (data) {
+    API.RandomDeck.query({}, function (data) {
       $scope.deck.cards = [];
-      syncDeckWithCards(data.data);
+      syncDeckWithCards(data);
       $scope.generating = false;
     });
   };
@@ -106,11 +140,11 @@ app.controller("DeckNewController", function (Main, Deck, Card, DeckList, toaste
     $state.go("app.deck-list");
   };
 
-  angular.element($window).bind("resize", setSlots);
+  angular.element($window).bind("resize", updateSlotsElementWith);
 
   $scope.$on("royaleClan.MainController:loadedCards", function (event, data) {
     $scope.localCards = data;
-    importLocalCards();
+    loadCardsLocally();
   });
 
   constructor();
