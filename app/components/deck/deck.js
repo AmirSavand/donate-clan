@@ -1,7 +1,17 @@
 "use strict";
 
-app.service("Deck", function (Card) {
+app.service("Deck", function (Card, Main) {
   return function (name, cards, type) {
+
+    /**
+     * @type {number}
+     */
+    this.id = null;
+
+    /**
+     * @type {string}
+     */
+    this.user = null;
 
     /**
      * @type {string}
@@ -19,9 +29,19 @@ app.service("Deck", function (Card) {
     this.type = type || 0;
 
     /**
-     * @type {float}
+     * @type {Date}
      */
-    this.avgElixir = 0.0;
+    this.date = new Date();
+
+    /**
+     * Get the type name by index
+     *
+     * @type {function}
+     * @returns {string}
+     */
+    this.getType = function () {
+      return Main.deck.type[this.type];
+    };
 
     /**
      * Calculate average elixir cost and update the variable then return it
@@ -29,30 +49,30 @@ app.service("Deck", function (Card) {
      * @type {function}
      * @returns {float}
      */
-    this.updateAvgElixirCost = function () {
+    this.getAvgElixir = function () {
       // Reset aec
-      this.avgElixir = 0;
+      var aec = 0;
       // For all cards
       for (var i in this.cards) {
         // Add elixir cost
-        this.avgElixir += this.cards[i].elixirCost;
+        aec += this.cards[i].elixirCost;
         // If card is mirror
         if (this.cards[i].idName === "mirror") {
           // Consider it 2 elixir cost
-          this.avgElixir += 2;
+          aec += 2;
         }
       }
       // Calculate the aec and update the instance variable
-      this.avgElixir /= this.cards.length;
+      aec /= this.cards.length;
       // Round it
-      this.avgElixir = Math.round(this.avgElixir * 10) / 10;
+      aec = Math.round(aec * 10) / 10;
       // Return it finally
-      return this.avgElixir;
+      return aec;
     };
 
     /**
      * @type {function}
-     * @returns {null|false}
+     * @returns {Card|false}
      *
      * @param {Card} card
      */
@@ -63,8 +83,8 @@ app.service("Deck", function (Card) {
       }
       // Add the card
       this.cards.push(card);
-      // Update AEC
-      this.updateAvgElixirCost();
+      // Return the card
+      return this;
     };
 
     /**
@@ -91,7 +111,7 @@ app.service("Deck", function (Card) {
       return {
         name: this.name,
         type: this.type,
-        avg_elixir: this.avgElixir,
+        avg_elixir: this.getAvgElixir(),
         cards: exportedCards.join(" "),
       };
     };
@@ -102,17 +122,22 @@ app.service("Deck", function (Card) {
      * @type {function}
      * @returns {Card}
      *
-     * @param {string} name
-     * @param {string} cards All cards separated by space
-     * @param {number} type
+     * @param {object} data
      */
-    this.import = function (name, cards, type) {
-      this.name = name;
+    this.import = function (data) {
+      this.id = data.id;
+      this.user = data.user;
+      this.name = data.name;
       this.cards = [];
-      this.type = type;
-      for (var i in cards.split(" ")) {
+      this.type = data.type;
+      this.date = new Date(data.date_created);
+
+      // Import cards
+      var cards = data.cards.split(" ");
+      for (var i in cards) {
         this.cards.push(new Card().import(cards[i]));
       }
+
       return this;
     };
   };
