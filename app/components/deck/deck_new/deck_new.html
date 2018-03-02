@@ -10,7 +10,7 @@
             <!-- Avg elixir cost -->
             <div class="badge badge-dark float-right"
               uib-tooltip="Avg Elixir Cost" tooltip-placement="left">
-              {{ deck.getAvgElixirCost() || 0 | number:1 }}
+              {{ deck.avgElixir || 0 }}
               <i class="fas fa-tint init"></i>
             </div>
           </div>
