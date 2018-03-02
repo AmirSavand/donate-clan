@@ -21,6 +21,13 @@ button,
 }
 
 
+/* Navbar */
+
+.navbar-brand {
+    margin-right: 2rem;
+}
+
+
 /* Cover */
 
 .cover {
