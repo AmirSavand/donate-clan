@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("DeckNewController", function (API, Main, Deck, Card, DeckList, toaster,
+app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
   $scope, $state, $stateParams, $http, $window) {
 
   /**
@@ -56,7 +56,7 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, DeckList, t
      *
      * @type {Deck}
      */
-    $scope.preDeck = $stateParams.deck;
+    var preDeck = $stateParams.deck;
 
     /**
      * Available cards to build deck with
@@ -115,6 +115,13 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, DeckList, t
      * @type {string}
      */
     $scope.orderBy = "elixirCost";
+
+    /**
+     * Load editing deck
+     */
+    if (preDeck) {
+      $scope.deck.cards = preDeck.cards;
+    }
 
     loadCardsLocally();
     updateSlotsElementWith();
