@@ -84,7 +84,7 @@ app.service("Deck", function (Card) {
     this.import = function (name, cards) {
       this.name = name;
       this.cards = [];
-      for (var i in cards) {
+      for (var i in cards.split(" ")) {
         this.cards.push(new Card().import(cards[i]));
       }
       return this;
