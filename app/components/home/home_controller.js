@@ -4,8 +4,14 @@ app.controller("HomeController", function (Member, Deck, Card, API, $scope) {
 
   function constructor() {
 
+    /**
+     * @type {Deck}
+     */
     $scope.deck = new Deck("Generated Deck", []);
 
+    /**
+     * @type {Array<Member>}
+     */
     $scope.members = [];
 
     // Get members
@@ -24,10 +30,12 @@ app.controller("HomeController", function (Member, Deck, Card, API, $scope) {
     $scope.generateDeck();
   }
 
+  /**
+   * Generate random deck from API
+   */
   $scope.generateDeck = function () {
     $scope.generating = true;
 
-    // Get a random deck
     API.RandomDeck.query({}, function (data) {
       $scope.generating = false;
       $scope.deck.cards = [];
