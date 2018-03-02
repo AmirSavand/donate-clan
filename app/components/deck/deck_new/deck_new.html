@@ -15,7 +15,7 @@
             </div>
           </div>
           <!-- Empty slots -->
-          <div class="card-body bg-pattern slots-wrapper">
+          <div class="card-body bg-asher slots-wrapper">
             <div class="row center-block slots">
               <div class="col-xs-6 col-md-3 col-sm-3 col-xs-6"
                 ng-repeat="card in slots track by $index">
@@ -39,41 +39,51 @@
           <div class="card-header bg-info py-4">
             Options <i class="fas float-right fa-edit"></i>
           </div>
-          <div class="card-body bg-asher">
+          <div class="card-body bg-white">
+
             <!-- Deck name -->
             <div class="form-group">
               <input type="text" ng-model="deck.name" placeholder="Deck name"
                 class="form-control">
             </div>
+
             <!-- Deck type -->
             <div class="form-group">
               <select class="form-control" ng-model="deck.type">
-                <option ng-value="$index" ng-repeat="type in deckTypes">
-                  {{ deckTypes[$index] }}
-                </option>
+                <option ng-value="-1">Deck type</option>
+                <option ng-value="$index" ng-repeat="type in deckTypes">{{ deckTypes[$index] }}</option>
               </select>
             </div>
-            <!-- Generate button -->
-            <button class="btn btn-info btn btn-block"
-              ng-disabled="generating" ng-click="generateDeck()">
-              <i class="fas fa-fw fa-sync"></i> Generate Deck
-            </button>
-            <!-- Save button -->
-            <button class="btn btn-success btn btn-block"
-              ng-disabled="generating" ng-click="save()" ng-if="!index">
-              <i class="fas fa-fw fa-check"></i> Save Deck
-            </button>
-            <!-- Update button -->
-            <button class="btn btn-info btn btn-block"
-              ng-disabled="generating" ng-click="save()" ng-if="index">
-              <i class="fas fa-fw fa-check"></i> Update Deck
-            </button>
+
+            <!-- Buttons -->
+            <div class="btn-group d-flex">
+
+              <!-- Generate button -->
+              <button class="btn w-100 btn-info"
+                ng-disabled="generating" ng-click="generateDeck()">
+                <i class="fas fa-fw fa-sync"></i> Generate
+              </button>
+
+              <!-- Save button -->
+              <button class="btn w-100 btn-success"
+                ng-disabled="generating" ng-click="save()" ng-if="!isNewDeck">
+                <i class="fas fa-fw fa-save"></i> Save
+              </button>
+
+              <!-- Update button -->
+              <button class="btn w-100 btn-success"
+                ng-disabled="generating" ng-click="save()" ng-if="isNewDeck">
+                <i class="fas fa-fw fa-check"></i> Update
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <!-- List of available cards -->
     <div class="card my-3 bg-asher text-white">
+
       <div class="card-header bg-success py-4">
         <!-- Title -->
         <span style="font-size: 1.5rem">
@@ -88,6 +98,7 @@
           </button>
         </div>
       </div>
+
       <!-- Card list -->
       <div class="card-body">
         <div class="row center-block">
@@ -101,5 +112,6 @@
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
