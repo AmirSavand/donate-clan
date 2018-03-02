@@ -2,7 +2,7 @@
 
 body {
     font-family: "Righteous", sans-serif;
-    background: whitesmoke;
+    background: #eef;
     padding-top: 56px;
 }
 
@@ -11,6 +11,14 @@ button,
 [ui-sref],
 [ng-click] {
     cursor: pointer;
+    text-decoration: none !important;
+}
+
+
+/* A */
+
+a.on-dark:hover {
+    color: #6cb3ff !important;
 }
 
 
@@ -134,6 +142,11 @@ card {
     max-width: 180px;
 }
 
+card:hover {
+    z-index: 1;
+    position: relative;
+}
+
 card:not(.init) {
     width: 100%;
 }
@@ -161,14 +174,14 @@ card cost {
     transition: all 0.1s ease-in-out;
 }
 
-card cover:hover {
+card:not(.no-cover-hover) cover:hover {
     border-color: rgba(0, 0, 0, 0.1) !important;
     background-size: 180px;
     box-shadow: none;
 }
 
-card cover:hover name,
-card cover:hover cost {
+card:not(.no-cover-hover) cover:hover name,
+card:not(.no-cover-hover) cover:hover cost {
     opacity: 0;
 }
 
@@ -207,6 +220,15 @@ card cost {
     font-size: 1.3em;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
     font-weight: bold;
+}
+
+card.no-cost cost,
+card.no-name name {
+    display: none;
+}
+
+card.no-name cover {
+    box-shadow: none;
 }
 
 
@@ -339,8 +361,8 @@ card cost {
 .inline-cards-item {
     display: inline-block;
     width: 35%;
-    margin: 2px 0;
-    margin-right: -14%;
+    margin: 0;
+    margin-right: -13%;
 }
 
 .inline-cards-item img {
