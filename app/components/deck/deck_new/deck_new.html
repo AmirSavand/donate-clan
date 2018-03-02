@@ -66,13 +66,13 @@
 
               <!-- Save button -->
               <button class="btn w-100 btn-success"
-                ng-disabled="generating" ng-click="save()" ng-if="!isNewDeck">
+                ng-disabled="generating" ng-click="save()" ng-if="isNewDeck">
                 <i class="fas fa-fw fa-save"></i> Save
               </button>
 
               <!-- Update button -->
               <button class="btn w-100 btn-success"
-                ng-disabled="generating" ng-click="save()" ng-if="isNewDeck">
+                ng-disabled="generating" ng-click="save()" ng-if="!isNewDeck">
                 <i class="fas fa-fw fa-check"></i> Update
               </button>
             </div>
