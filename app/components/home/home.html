@@ -6,16 +6,16 @@
   </div>
 </div>
 
-<div class="container py-4">
+<div class="container">
   <div class="row">
 
     <!-- Left side -->
-    <div class="col-md-6">
+    <div class="col-lg-5">
 
       <!-- Users -->
-      <div class="card mb-3">
-        <div class="card-header bg-dark text-white s-pad-soft">
-          Users <i class="fas fa-fw text-secondary float-right fa-users"></i>
+      <div class="card my-4">
+        <div class="card-header bg-dark text-white py-4">
+          Users <i class="fas fa-fw o-fade float-right fa-users"></i>
         </div>
         <div class="list-group list-group-flush">
           <a class="list-group-item"
@@ -31,9 +31,9 @@
       </div>
 
       <!-- Clan members -->
-      <div class="card">
-        <div class="card-header bg-dark text-white s-pad-soft">
-          Clan Members <i class="fas fa-fw text-secondary float-right fa-chess"></i>
+      <div class="card my-4">
+        <div class="card-header bg-dark text-white py-4">
+          Clan Members <i class="fas fa-fw o-fade float-right fa-chess"></i>
         </div>
         <div class="list-group list-group-flush" ng-if="members.length">
           <a class="list-group-item"
@@ -41,7 +41,7 @@
             ng-if="member.get.role != 'member'"
             ng-repeat="member in members | orderBy:'-roleRank'">
             {{ member.get.name | underspace }}
-            <small class="text-secondary float-right">{{ member.get.role | uppercase }}</small>
+            <small class="o-fade float-right">{{ member.get.role | uppercase }}</small>
           </a>
         </div>
         <!-- Loading -->
@@ -52,7 +52,7 @@
     </div>
 
     <!-- Right side -->
-    <div class="col-md-6">
+    <div class="col-lg-7">
 
       <!-- Random Deck -->
       <div class="card my-4">
