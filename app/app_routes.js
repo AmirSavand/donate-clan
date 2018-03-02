@@ -52,12 +52,6 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     }
   })
 
-  // .state("app.deck-list", {
-  //   url: "/decks/",
-  //   controller: "DeckListController",
-  //   templateUrl: "components/deck/deck_list/deck_list.html"
-  // })
-
   .state("app.deck-new", {
     url: "/build/:index",
     controller: "DeckNewController",
@@ -65,6 +59,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     params: {
       deck: null
     }
+  })
+
+  .state("app.deck-list", {
+    url: "/decks/:username",
+    controller: "DeckListController",
+    templateUrl: "components/deck/deck_list/deck_list.html"
   });
 
   $urlRouterProvider.otherwise("/");
