@@ -33,7 +33,7 @@ app.constant("Main", {
   },
   deck: {
     type: [
-      "Deck Type (None)",
+      "None",
       "Cycle",
       "Spell Bait",
       "Beatdown",
