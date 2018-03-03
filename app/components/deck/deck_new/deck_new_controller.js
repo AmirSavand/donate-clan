@@ -144,9 +144,9 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
    */
   $scope.save = function () {
 
-    // Check for at least 1 card
-    if (!$scope.deck.cards.length) {
-      return toaster.error("Unable to Save", "You need to select at least 1 card.");
+    // Deck full of cards
+    if ($scope.deck.cards.length === 8) {
+      return toaster.error("Unable to Save", "You need to select 8 cards.");
     }
 
     // Set default deck type if not set
