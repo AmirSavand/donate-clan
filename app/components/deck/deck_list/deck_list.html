@@ -29,9 +29,23 @@
           <a ui-sref="app.deck({id: deck.id, deck: deck})" class="text-white on-dark">{{ deck.name }}</a>
 
           <!-- Options -->
-          <!-- <button class="btn btn-warning btn-sm float-right" style="margin: -4px">
+          <button class="btn btn-warning btn-sm float-right" style="margin: -4px" data-toggle="dropdown">
             <i class="fas fa-chevron-down"></i>
-          </button> -->
+          </button>
+
+          <!-- Options menu -->
+          <div class="dropdown-menu">
+            <!-- Links -->
+            <a class="dropdown-item" ui-sref="app.deck({id: deck.id, deck: deck})">View Deck</a>
+            <a class="dropdown-item" ui-sref="app.deck-list({username: deck.user})">View {{ deck.user }}'s Decks</a>
+            <a class="dropdown-item" ui-sref="app.deck-new({deck: deck})">Copy and Edit</a>
+            <!-- Owner options -->
+            <span ng-if="deck.isOwner()">
+              <hr>
+              <h6 class="dropdown-header">Owner Options</h6>
+              <a class="dropdown-item text-success" ui-sref="app.deck-new({id: deck.id, deck: deck})">Update Deck</a>
+            </span>
+          </div>
         </div>
 
         <!-- Cards -->
