@@ -17,10 +17,10 @@
   <!-- Decks -->
   <div class="row">
     <div class="col-lg-4 col-md-6" ng-repeat="deck in decks | reverse">
-      <div class="card bg-dark text-white my-3">
+      <div class="card my-3">
 
         <!-- Header -->
-        <div class="card-header py-3">
+        <div class="card-header bg-dark text-white py-3">
 
           <!-- AEC -->
           <span class="o-fade-soft"><i class="fas fa-tint"></i> {{ deck.getAvgElixir() || 0 }}</span>
@@ -52,7 +52,7 @@
           <span ng-if="deck.type > 0">{{ deck.getType() }} deck &bull;</span>
 
           <!-- User -->
-          <a ui-sref="app.user({username: deck.user })" class="text-info">
+          <a ui-sref="app.user({username: deck.user })">
             By {{ deck.user }}
           </a>
         </div>
