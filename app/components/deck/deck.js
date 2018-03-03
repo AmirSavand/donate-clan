@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Deck", function (Card, Main) {
+app.service("Deck", function (Auth, Card, Main) {
   return function (name, cards, type) {
 
     /**
@@ -95,6 +95,15 @@ app.service("Deck", function (Card, Main) {
      */
     this.removeCard = function (card) {
       this.cards.splice(this.cards.indexOf(card), 1);
+    };
+
+    /**
+     * Check if signed in user is owner of this deck
+     *
+     * @type {boolean}
+     */
+    this.isOwner = function () {
+      return this.user === Auth.getAuth().username;
     };
 
     /**
