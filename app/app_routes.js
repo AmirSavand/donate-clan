@@ -53,7 +53,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   })
 
   .state("app.deck-new", {
-    url: "/build/:index",
+    url: "/build/:id",
     controller: "DeckNewController",
     templateUrl: "components/deck/deck_new/deck_new.html",
     params: {
