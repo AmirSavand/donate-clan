@@ -1,0 +1,63 @@
+<!-- Cover -->
+<div class="container-fluid cover cover-bg cover-bg-pattern bg-pattern text-white">
+  <div class="container">
+    <h1 class="text-dark my-2">
+      <a class="text-white on-dark" ui-sref="app.deck({id: deck.id, deck: deck})">{{ deck.name }}</a>
+    </h1>
+    <h4 class="o-fade-soft">
+      <span ng-if="deck.type > 0">{{ deck.getType() }} deck by</span>
+      <a ui-sref="app.user({username: deck.user})" class="text">{{ deck.user }}</a>
+    </h4>
+  </div>
+</div>
+
+<!-- Deck -->
+<div class="container py-4">
+
+  <!-- Deck info -->
+  <div class="row">
+
+    <!-- Cards -->
+    <div class="col-md-7 my-3">
+      <div class="card bg-pattern text-white">
+        <div class="card-body">
+          <card ng-repeat="card in deck.cards"
+            ng-include="'components/card/card_include.html'"
+            ng-click="card.view()">
+          </card>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="col-md-4 my-3">
+      <div class="card bg-dark">
+        <!-- Header -->
+        <div class="card-header text-white"><i class="fas fa-fw fa-info-circle"></i> Info</div>
+        <!-- List -->
+        <ul class="list-group list-group-flush">
+          <!-- AEC -->
+          <li class="list-group-item">
+            <span class="text-secondary">Avg elixir cost:</span>
+            <span class="float-right">{{ deck.getAvgElixir() }}</span>
+          </li>
+          <!-- Type -->
+          <li class="list-group-item">
+            <span class="text-secondary">Deck type:</span>
+            <span class="float-right">{{ deck.getType() }}</span>
+          </li>
+          <!-- Creator -->
+          <li class="list-group-item">
+            <span class="text-secondary">Creator by:</span>
+            <span class="float-right"><a ui-sref="app.user({username: deck.user})">{{ deck.user }}</a></span>
+          </li>
+          <!-- Date -->
+          <li class="list-group-item">
+            <span class="text-secondary">Date created:</span>
+            <span class="float-right">{{ deck.date | date }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
