@@ -65,6 +65,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     url: "/decks/:username",
     controller: "DeckListController",
     templateUrl: "components/deck/deck_list/deck_list.html"
+  })
+
+  .state("app.deck", {
+    url: "/deck/:id",
+    controller: "DeckController",
+    templateUrl: "components/deck/deck.html",
+    params: {
+      deck: null
+    }
   });
 
   $urlRouterProvider.otherwise("/");
