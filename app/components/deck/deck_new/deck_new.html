@@ -13,7 +13,7 @@
             <!-- Avg elixir cost -->
             <div class="badge badge-dark float-right"
               uib-tooltip="Avg Elixir Cost" tooltip-placement="left">
-              {{ deck.avgElixir || 0 }}
+              {{ deck.getAvgElixir() || 0 }}
               <i class="fas fa-tint init"></i>
             </div>
           </div>
@@ -80,7 +80,7 @@
 
               <!-- Update button -->
               <button class="btn w-100 btn-success"
-                ng-disabled="generating" ng-click="save()" ng-if="!isNewDeck">
+                ng-disabled="generating" ng-click="update()" ng-if="!isNewDeck">
                 <i class="fas fa-fw fa-check"></i> Update
               </button>
             </div>

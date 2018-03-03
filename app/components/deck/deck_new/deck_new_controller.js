@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
+app.controller("DeckNewController", function (Auth, API, Main, Deck, Card, toaster,
   $scope, $state, $stateParams, $http, $window) {
 
   /**
@@ -43,12 +43,35 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
     });
   }
 
+  /**
+   * Check and validate deck
+   *
+   * @returns {bool}
+   */
+  function isDeckValidToSave() {
+    // Deck full of cards
+    if ($scope.deck.cards.length !== 8) {
+      toaster.error("Unable to Save", "You need to select 8 cards.");
+      return false;
+    }
+    // Set default deck type if not set
+    if ($scope.deck.type === -1) {
+      $scope.deck.type = $scope.deckTypes.indexOf("None");
+    }
+    return true;
+  }
+
   function constructor() {
 
     /**
      * Saving (new deck) or updating (existing deck) a deck
      */
-    $scope.isNewDeck = true;
+    $scope.isNewDeck = !$stateParams.id;
+
+    /**
+     * Loading state to disallow user to save, update or generate deck
+     */
+    $scope.loading = false;
 
     /**
      * Given deck by the route param
@@ -56,7 +79,7 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
      *
      * @type {Deck}
      */
-    var preDeck = $stateParams.deck;
+    $scope.copiedDeck = $stateParams.deck;
 
     /**
      * Available cards to build deck with
@@ -119,8 +142,25 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
     /**
      * Load editing deck
      */
-    if (preDeck) {
-      $scope.deck.cards = preDeck.cards;
+    if ($scope.copiedDeck) {
+      $scope.deck = $scope.copiedDeck;
+    }
+
+    /**
+     * Edit deck by given id in params (if instance is not givin in params)
+     */
+    if ($stateParams.id && !$scope.copiedDeck) {
+      $scope.loading = true;
+      // Get deck by id and username
+      API.Decks.get({ id: $stateParams.id, user: Auth.getAuth().username },
+        function (data) {
+          $scope.deck = new Deck().import(data);
+        },
+        function () {
+          toaster.error("Unable to Access", "Deck doesn't exist or you don't have access to update it.", 10000);
+          $state.go("app.deck-list");
+        }
+      );
     }
 
     loadCardsLocally();
@@ -131,11 +171,11 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
    * Generate random deck via API
    */
   $scope.generateDeck = function () {
-    $scope.generating = true;
+    $scope.loading = true;
     API.RandomDeck.query({}, function (data) {
       $scope.deck.cards = [];
       syncDeckWithCards(data);
-      $scope.generating = false;
+      $scope.loading = false;
     });
   };
 
@@ -144,20 +184,33 @@ app.controller("DeckNewController", function (API, Main, Deck, Card, toaster,
    */
   $scope.save = function () {
 
-    // Deck full of cards
-    if ($scope.deck.cards.length === 8) {
-      return toaster.error("Unable to Save", "You need to select 8 cards.");
-    }
-
-    // Set default deck type if not set
-    if ($scope.deck.type === -1) {
-      $scope.deck.type = $scope.deckTypes.indexOf("None");
+    // Validate
+    if (!isDeckValidToSave()) {
+      return;
     }
 
     // Save the deck
     API.Decks.save($scope.deck.export(), function (data) {
       toaster.success("Awesome", $scope.deck.name + " is in your collection now.");
       $state.go("app.deck-list", { username: data.user });
+    });
+  };
+
+  /**
+   * Update the deck
+   */
+  $scope.update = function () {
+
+    // Validate
+    if (!isDeckValidToSave()) {
+      return;
+    }
+
+
+    // Update the deck
+    API.Decks.put({ id: $scope.deck.id }, $scope.deck.export(), function (data) {
+      toaster.success("Done", $scope.deck.name + " updated.");
+      $state.go("app.deck", { deck: $scope.deck, id: $scope.deck.id });
     });
   };
 
