@@ -37,10 +37,5 @@ app.controller("DeckListController", function (API, Deck, toaster, $scope, $stat
     });
   }
 
-  $scope.remove = function (card) {
-    toaster.info("Deleted", card.name + " is deleted.");
-    constructor();
-  };
-
   constructor();
 });

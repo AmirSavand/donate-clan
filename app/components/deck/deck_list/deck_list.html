@@ -15,7 +15,7 @@
   <hr>
 
   <!-- Decks -->
-  <div class="row" vertilize-container>
+  <div class="row">
     <div class="col-lg-4 col-md-6" ng-repeat="deck in decks | reverse">
       <div class="card bg-dark text-white my-3">
 
@@ -26,12 +26,12 @@
           <span class="o-fade-soft"><i class="fas fa-tint"></i> {{ deck.getAvgElixir() || 0 }}</span>
 
           <!-- Name (link) -->
-          <a href="#" class="text-white on-dark">{{ deck.name }}</a>
+          <a ui-sref="app.deck({id: deck.id, deck: deck})" class="text-white on-dark">{{ deck.name }}</a>
 
           <!-- Options -->
-          <button class="btn btn-warning btn-sm float-right" style="margin: -4px">
+          <!-- <button class="btn btn-warning btn-sm float-right" style="margin: -4px">
             <i class="fas fa-chevron-down"></i>
-          </button>
+          </button> -->
         </div>
 
         <!-- Cards -->
