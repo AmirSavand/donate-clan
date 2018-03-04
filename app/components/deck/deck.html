@@ -44,36 +44,62 @@
       </div>
     </div>
 
-    <!-- Info -->
-    <div class="col-md-4 my-4">
-      <div class="card bg-dark">
-        <!-- Header -->
-        <div class="card-header text-white">
+    <!-- Right side -->
+    <div class="col-md-4">
+
+      <!-- Info -->
+      <div class="card bg-dark my-4">
+        <div class="card-header text-white py-4">
           Info <i class="fas text-secondary float-right fa-info-circle"></i>
         </div>
+
         <!-- List -->
         <ul class="list-group list-group-flush">
+
           <!-- AEC -->
           <li class="list-group-item">
             <span class="text-secondary">Avg elixir cost:</span>
             <span class="float-right">{{ deck.getAvgElixir() }}</span>
           </li>
+
           <!-- Type -->
           <li class="list-group-item">
             <span class="text-secondary">Deck type:</span>
             <span class="float-right">{{ deck.getType() }}</span>
           </li>
+
           <!-- Creator -->
           <li class="list-group-item">
             <span class="text-secondary">Creator by:</span>
             <span class="float-right"><a ui-sref="app.user({username: deck.user})">{{ deck.user }}</a></span>
           </li>
+
           <!-- Date -->
           <li class="list-group-item">
             <span class="text-secondary">Date created:</span>
             <span class="float-right">{{ deck.date | date }}</span>
           </li>
         </ul>
+      </div>
+
+      <!-- Options -->
+      <div class="card bg-dark my-4">
+        <div class="card-header text-white py-4">
+          Deck Options <i class="fa fa-cog float-right text-secondary"></i>
+        </div>
+
+        <!-- Normal options -->
+        <div class="list-group list-group-flush">
+          <a class="list-group-item" ui-sref="app.deck({id: deck.id, deck: deck})">View Deck</a>
+          <a class="list-group-item" ui-sref="app.deck-list({username: deck.user})">View {{ deck.user }}'s Decks</a>
+          <a class="list-group-item" ui-sref="app.deck-new({deck: deck})">Copy and Edit</a>
+        </div>
+
+        <!-- Owner options -->
+        <div class="list-group list-group-flush" ng-if="deck.isOwner()">
+          <small class="list-group-item disabled">Owner Options</small>
+          <a class="list-group-item text-success" ui-sref="app.deck-new({id: deck.id, deck: deck})">Update Deck</a>
+        </div>
       </div>
     </div>
   </div>
