@@ -13,8 +13,8 @@
     <div class="col-lg-5">
 
       <!-- Users -->
-      <div class="card my-4">
-        <div class="card-header bg-dark text-white py-4">
+      <div class="card my-4 bg-dark text-white">
+        <div class="card-header py-4">
           Users <i class="fas fa-fw o-fade float-right fa-users"></i>
         </div>
         <div class="list-group list-group-flush">
@@ -25,14 +25,14 @@
           </a>
         </div>
         <!-- Loading -->
-        <div class="card-body text-center py-5" ng-if="!users">
+        <div class="card-body text-center bg-white py-5" ng-if="!users">
           <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
       </div>
 
       <!-- Clan members -->
-      <div class="card my-4">
-        <div class="card-header bg-dark text-white py-4">
+      <div class="card my-4 bg-dark text-white">
+        <div class="card-header py-4">
           Clan Members <i class="fas fa-fw o-fade float-right fa-chess"></i>
         </div>
         <div class="list-group list-group-flush" ng-if="members.length">
@@ -45,7 +45,7 @@
           </a>
         </div>
         <!-- Loading -->
-        <div class="card-body text-center py-5" ng-if="!members.length">
+        <div class="card-body text-center bg-white py-5" ng-if="!members.length">
           <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
       </div>
@@ -55,22 +55,24 @@
     <div class="col-lg-7">
 
       <!-- Random Deck -->
-      <div class="card my-4">
-        <div class="card-header bg-dark text-white py-4">
-          Random Deck &bull; {{ deck.getAvgElixir() }} <i class="fas fa-fw float-right o-fade fa-random"></i>
+      <div class="card my-4 bg-dark text-white">
+
+        <!-- Header -->
+        <div class="card-header py-4">
+          Random Deck &bull; {{ deck.getAvgElixir() }}
+          <i class="fas fa-fw float-right o-fade fa-random"></i>
         </div>
-        <div class="card-body">
+        <div class="card-body bg-white">
+
+          <!-- Cards -->
           <card ng-repeat="card in deck.cards"
             ng-include="'components/card/card_include.html'"
             ng-click="card.view()">
           </card>
-        </div>
-        <!-- Loading -->
-        <div class="card-body text-center py-5" ng-if="!deck.cards.length">
-          <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
-        </div>
-        <div class="card-footer">
-          <div class="row">
+
+          <!-- Buttons -->
+          <div class="row mt-3">
+
             <!-- New random deck -->
             <div class="col-lg-9 my-1">
               <button class="btn btn-lg btn-block btn-info"
@@ -78,6 +80,7 @@
                 <i class="fas fa-fw fa-sync"></i> New Random Deck
               </button>
             </div>
+
             <!-- Edit deck -->
             <div class="col-lg-3 my-1">
               <button class="btn btn-lg btn-block btn-success" title="Edit this deck"
@@ -86,6 +89,10 @@
               </button>
             </div>
           </div>
+        </div>
+        <!-- Loading -->
+        <div class="card-body text-center bg-white py-5" ng-if="!deck.cards.length">
+          <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
         </div>
       </div>
 
