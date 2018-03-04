@@ -17,8 +17,10 @@
   <!-- Deck info -->
   <div class="row">
 
-    <!-- Cards -->
-    <div class="col-md-7 my-3">
+    <!-- Left side -->
+    <div class="col-md-7 my-4">
+
+      <!-- Cards -->
       <div class="card bg-pattern text-white">
         <div class="card-body">
           <card ng-repeat="card in deck.cards"
@@ -27,13 +29,28 @@
           </card>
         </div>
       </div>
+
+      <!-- Deck discussion -->
+      <div class="card my-4">
+        <div class="card bg-dark text-white">
+          <div class="card-header py-4">
+            Deck Discussion <i class="fas fa-comments float-right text-secondary"></i>
+          </div>
+          <div class="card-body bg-white text-center">
+            <!-- Widget -->
+            <div disqus="'deck-' + deck.id"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Info -->
-    <div class="col-md-4 my-3">
+    <div class="col-md-4 my-4">
       <div class="card bg-dark">
         <!-- Header -->
-        <div class="card-header text-white"><i class="fas fa-fw fa-info-circle"></i> Info</div>
+        <div class="card-header text-white">
+          Info <i class="fas text-secondary float-right fa-info-circle"></i>
+        </div>
         <!-- List -->
         <ul class="list-group list-group-flush">
           <!-- AEC -->
