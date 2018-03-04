@@ -36,7 +36,8 @@ app.service("API", function (ENV, $resource) {
     apiData[attrName] = $resource(endpoint, {}, {
       put: { method: "PUT" },
       post: { method: "POST" },
-      patch: { method: "PATCH" }
+      patch: { method: "PATCH" },
+      delete: { method: "DELETE" }
     });
   }
 
