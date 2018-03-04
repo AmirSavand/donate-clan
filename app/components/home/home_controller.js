@@ -49,5 +49,12 @@ app.controller("HomeController", function (Member, Deck, Card, API, $scope) {
     });
   };
 
+  /**
+   * Show (load) discussion widget
+   */
+  $scope.joinDiscussion = function () {
+    $scope.showDiscussion = true;
+  };
+
   constructor();
 });

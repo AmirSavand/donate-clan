@@ -88,6 +88,25 @@
           </div>
         </div>
       </div>
+
+      <!-- Discussion -->
+      <div class="card my-4">
+        <div class="card bg-dark text-white">
+          <div class="card-header py-4">
+            Discussion <i class="fas fa-comments float-right text-secondary"></i>
+          </div>
+          <div class="card-body bg-white text-center">
+
+            <!-- Show button -->
+            <button class="btn btn-lg btn-info m-0" ng-click="joinDiscussion()" ng-if="showDiscussion != true">
+              <i class="fa fa-download"></i> Show Discussion
+            </button>
+
+            <!-- Widget -->
+            <div disqus="'home'" ng-if="showDiscussion == true"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
