@@ -99,6 +99,7 @@
         <div class="list-group list-group-flush" ng-if="deck.isOwner()">
           <small class="list-group-item disabled">Owner Options</small>
           <a class="list-group-item text-success" ui-sref="app.deck-new({id: deck.id, deck: deck})">Update Deck</a>
+          <div class="list-group-item text-success" ng-click="deck.delete()">Delete Deck</div>
         </div>
       </div>
     </div>
