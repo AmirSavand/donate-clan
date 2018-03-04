@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Deck", function (Auth, Card, Main) {
+app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
   return function (name, cards, type) {
 
     /**
@@ -104,6 +104,27 @@ app.service("Deck", function (Auth, Card, Main) {
      */
     this.isOwner = function () {
       return this.user === Auth.getAuth().username;
+    };
+
+    /**
+     * Delete deck via API
+     *
+     * @returns {bool} True if deletion was successful
+     */
+    this.delete = function () {
+
+      // Check onwership
+      if (!this.isOwner()) {
+        return false;
+      }
+
+      // API call, toast and redirect
+      API.Decks.delete({ id: this.id });
+      $state.go("app.deck-list", { username: this.user });
+      toaster.success("Deleted", "Deleted deck: " + this.name);
+
+      // Success
+      return true;
     };
 
     /**
