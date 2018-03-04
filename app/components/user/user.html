@@ -1,6 +1,10 @@
 <div class="container s-mar-y">
   <div class="row">
+
+    <!-- Left side -->
     <div class="col-md-4">
+
+      <!-- Profile -->
       <div class="card">
         <div class="card-body bg-dark text-white text-center">
 
@@ -59,6 +63,21 @@
             </span>
             <span class="float-right">{{ user.date_joined | date:'dd MMM yyyy' }}</span>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side -->
+    <div class="col-md-8">
+
+      <!-- Comments -->
+      <div class="card bg-dark text-white">
+        <div class="card-header py-4">
+          {{ user.username }}'s Wall
+          <i class="fas fa-comments float-right"></i>
+        </div>
+        <div class="card-body bg-white">
+          <div disqus="'{{ user.username }}'"></div>
         </div>
       </div>
     </div>

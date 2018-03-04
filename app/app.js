@@ -6,6 +6,7 @@
  */
 var app = angular.module("royaleClan", [
   "ngResource",
+  "ngDisqus",
   "ui.router",
   "ui.bootstrap",
   "toaster"
@@ -14,11 +15,12 @@ var app = angular.module("royaleClan", [
 /**
  * @name config
  */
-app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, uibDropdownConfig) {
+app.config(function ($qProvider, $resourceProvider, $locationProvider, $httpProvider, $disqusProvider, uibDropdownConfig) {
   $qProvider.errorOnUnhandledRejections(false);
   $resourceProvider.defaults.stripTrailingSlashes = false;
   $httpProvider.interceptors.push("AuthInterceptor");
-  $locationProvider.hashPrefix("");
+  $locationProvider.hashPrefix("!");
+  $disqusProvider.setShortname("royale-clan");
   uibDropdownConfig.openClass = "show";
 });
 
