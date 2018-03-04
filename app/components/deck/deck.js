@@ -118,6 +118,11 @@ app.service("Deck", function (API, Auth, Card, Main, toaster, $state) {
         return false;
       }
 
+      // Confirm
+      if (!confirm("Are you sure you want to delete this deck?")) {
+        return false;
+      }
+
       // API call, toast and redirect
       API.Decks.delete({ id: this.id });
       $state.go("app.deck-list", { username: this.user });

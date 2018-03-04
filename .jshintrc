@@ -3,6 +3,7 @@
   "globals": {
     "angular": false,
     "app": true,
-    "localStorage": true
+    "localStorage": true,
+    "confirm": true
   }
 }
