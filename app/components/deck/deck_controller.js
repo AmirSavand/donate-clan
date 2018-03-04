@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("DeckController", function (API, Deck, toaster, $scope, $stateParams) {
+app.controller("DeckController", function (API, Deck, toaster, $scope, $state, $stateParams) {
 
   function constructor() {
 
@@ -13,9 +13,15 @@ app.controller("DeckController", function (API, Deck, toaster, $scope, $statePar
      * Get deck via API
      */
     if (!$scope.deck) {
-      API.Decks.get({ id: $stateParams.id }, function (data) {
-        $scope.deck = new Deck().import(data);
-      });
+      API.Decks.get({ id: $stateParams.id },
+        function (data) {
+          $scope.deck = new Deck().import(data);
+        },
+        function () {
+          toaster.error("Unable to Access", "Deck doesn't exist or you don't have access to update it.", 10000);
+          $state.go("app.deck-list");
+        }
+      );
     }
   }
 
