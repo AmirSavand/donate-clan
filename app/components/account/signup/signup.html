@@ -21,8 +21,8 @@
           </div>
           <!-- Email -->
           <div class="form-group" ng-class="{'has-danger': form.error.email}">
-            <input type="email" class="form-control form-control-lg" placeholder="Email (optional)"
-              ng-model="form.data.email">
+            <input type="email" class="form-control form-control-lg" placeholder="Email"
+              ng-model="form.data.email" required>
             <div class="form-control-feedback" ng-if="form.error.email">{{ form.error.email[0] }}</div>
           </div>
           <!-- Submit -->
