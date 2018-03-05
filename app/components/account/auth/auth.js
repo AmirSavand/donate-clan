@@ -71,8 +71,9 @@ app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
 
     API.SignIn.post({ username: username, password: password }, function (data) {
       self.setAuth(data.user, data.token);
-      toaster.info("Signed in", "Welcome to the awesomeness " + username + ".");
       form.loading = false;
+      toaster.info("Signed in", "Welcome to the awesomeness " + username + ".");
+      $state.go("app.user", { username: username, user: self.getAuth() });
 
       if (success) {
         success();
