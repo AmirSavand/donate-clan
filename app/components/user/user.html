@@ -37,6 +37,16 @@
               #{{ user.member }}
             </a>
           </div>
+
+          <!-- Decks count -->
+          <div class="list-group-item" ng-if="user.date_joined">
+            <span class="text-secondary">
+              <i class="fas fa-fw o-fade fa-cube"></i> Decks:
+            </span>
+            <span class="float-right" title="Click to see {{ user.username }}'s decks">
+              <a ui-sref="app.deck-list({username: user.username})">{{ user.decks_count }} decks</a>
+            </span>
+          </div>
         
           <!-- Website link -->
           <div class="list-group-item" ng-if="user.link">
@@ -63,11 +73,6 @@
             </span>
             <span class="float-right">{{ user.date_joined | date:'dd MMM yyyy' }}</span>
           </div>
-
-          <!-- Decks -->
-          <a ui-sref="app.deck-list({username: user.username})" class="list-group-item text-center text-warning"> 
-            View {{ user.username }}'s Decks
-          </a>
         </div>
       </div>
     </div>
