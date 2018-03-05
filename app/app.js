@@ -45,6 +45,16 @@ app.run(function (Auth, toaster, $state, $window, $rootScope, $anchorScroll) {
   $rootScope.feedback = "mailto:amir@savandbros.com?Subject=Royale Clan v" + $rootScope.version;
 
   /**
+   * @type {string}
+   */
+  $rootScope.github = "https://github.com/AmirSavand/royale-clan";
+
+  /**
+   * @type {Date}
+   */
+  $rootScope.now = new Date();
+
+  /**
    * Page loaded completely
    */
   $rootScope.$on("$viewContentLoaded", function () {
