@@ -12,18 +12,25 @@
           <div class="form-group" ng-class="{'has-danger': form.error.username}">
             <input type="text" class="form-control form-control-lg" placeholder="Username"
               ng-model="form.data.username" required ng-minlength="3">
-            <div class="form-control-feedback" ng-if="form.error.username">{{ form.error.username[0] }}</div>
-          </div>
-          <!-- Passowrd -->
-          <div class="form-group">
-            <input type="password" class="form-control form-control-lg" placeholder="Password"
-              ng-model="form.data.password" required ng-minlength="3">
+            <div class="form-control-feedback text-danger" ng-if="form.error.username">
+              {{ form.error.username[0] }}
+            </div>
           </div>
           <!-- Email -->
           <div class="form-group" ng-class="{'has-danger': form.error.email}">
             <input type="email" class="form-control form-control-lg" placeholder="Email"
               ng-model="form.data.email" required>
-            <div class="form-control-feedback" ng-if="form.error.email">{{ form.error.email[0] }}</div>
+            <div class="form-control-feedback text-danger" ng-if="form.error.email">
+              {{ form.error.email[0] }}
+            </div>
+          </div>
+          <!-- Passowrd -->
+          <div class="form-group">
+            <input type="password" class="form-control form-control-lg" placeholder="Password"
+              ng-model="form.data.password" required ng-minlength="3">
+              <div class="form-control-feedback text-danger" ng-if="form.error.password">
+                {{ form.error.password[0] }}
+              </div>
           </div>
           <!-- Submit -->
           <button class="btn btn-success btn-lg btn-block" ng-disabled="form.$invalid || form.loading">
