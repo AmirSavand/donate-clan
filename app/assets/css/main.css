@@ -14,6 +14,19 @@ button,
     text-decoration: none !important;
 }
 
+::-webkit-scrollbar-track,
+::-webkit-scrollbar {
+    background: #EAEDF1;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #343a40;
+}
+
 
 /* A */
 
@@ -402,4 +415,11 @@ card.no-name cover {
     font-weight: bold;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
     color: #fff;
+}
+
+
+/* Footer */
+
+.footer {
+    box-shadow: 0 1000px 0 1000px #f8f9fa;
 }
