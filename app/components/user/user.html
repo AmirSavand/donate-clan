@@ -63,6 +63,11 @@
             </span>
             <span class="float-right">{{ user.date_joined | date:'dd MMM yyyy' }}</span>
           </div>
+
+          <!-- Decks -->
+          <a ui-sref="app.deck-list({username: user.username})" class="list-group-item text-center text-warning"> 
+            View {{ user.username }}'s Decks
+          </a>
         </div>
       </div>
     </div>
