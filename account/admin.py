@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from account.models import User
+
+from account.models import User, Follow
 
 
 @admin.register(User)
@@ -20,6 +21,14 @@ class UserAdmin(admin.ModelAdmin):
         'username',
         'email',
     ]
+
+
+@admin.register(Follow)
+class FollowAdmin(admin.ModelAdmin):
+    list_display = (
+        'user',
+        'following',
+    )
 
 
 admin.site.unregister(Group)

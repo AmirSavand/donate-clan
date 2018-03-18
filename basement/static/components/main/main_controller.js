@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("MainController", function (ENV, Auth, API, $scope, $rootScope, $state) {
+app.controller("MainController", function (ENV, Auth, API, Account, $scope, $rootScope, $state) {
 
   /**
    * Get user data
@@ -11,7 +11,7 @@ app.controller("MainController", function (ENV, Auth, API, $scope, $rootScope, $
         // Update data
         Auth.updateAuth(data, false);
         // Store data
-        $scope.user = Auth.getAuth();
+        $scope.user = new Account(Auth.getAuth());
       });
     }
   }

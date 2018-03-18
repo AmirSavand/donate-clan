@@ -8,52 +8,70 @@
       <div class="card my-4">
         <div class="card-body bg-dark text-white text-center">
 
+          <!-- Follow -->
+          <button class="btn btn-outline-success mb-2 d-block float-right" ng-click="user.follow()">Follow</button>
+          <div class="clearfix"></div>
+
           <!-- Picture -->
           <div class="user-picture-wrapper">
-            <div class="user-picture" style="background-image: url('{{ user.picture || static('assets/img/avatar.png') }}')"></div>
+            <div class="user-picture" style="background-image: url('{{ user.picture }}')"></div>
           </div>
 
           <!-- User name and icon -->
           <h1>
-            <small ng-if="user.is_admin">
+            <small ng-if="user.get.is_admin">
               <i class="fas fa-user-secret text-warning" title="{{ user.username }} is an admin"></i>
             </small>
             {{ user.username }}
           </h1>
 
           <!-- About -->
-          <p class="o-fade-soft t-ws">{{ user.about || "Nothing to say..." }}</p>
+          <p class="o-fade-soft t-ws">{{ user.get.about || "Nothing to say..." }}</p>
+        </div>
+
+        <!-- Metrics -->
+        <div class="card-body bg-light text-center">
+          <div class="row">
+            <div class="col-lg-6">
+              <h6>Following</h6>
+              <span>{{ user.get.followings_count }}</span>
+            </div>
+            <div class="col-lg-6">
+              <h6>Followers</h6>
+              <span>{{ user.get.followers_count }}</span>
+            </div>
+          </div>
         </div>
 
         <!-- Info -->
         <div class="list-group list-group-flush">
-        
+
           <!-- Membership -->
-          <div class="list-group-item" ng-if="user.member">
+          <div class="list-group-item" ng-if="user.get.member">
             <span class="text-secondary">
               <i class="fas fa-fw o-fade fa-chess"></i> Membership:
             </span>
-            <a ui-sref="app.member({tag: user.member})" class="float-right">
-              #{{ user.member }}
+            <a ui-sref="app.member({tag: user.get.member})" class="float-right">
+              #{{ user.get.member }}
             </a>
           </div>
 
           <!-- Decks count -->
-          <div class="list-group-item" ng-if="user.joined">
+          <div class="list-group-item" ng-if="user.get.joined">
             <span class="text-secondary">
               <i class="fas fa-fw o-fade fa-cube"></i> Decks:
             </span>
             <span class="float-right" title="Click to see {{ user.username }}'s decks">
-              <a ui-sref="app.deck-list({username: user.username})">{{ user.decks_count }} decks</a>
+              <a ui-sref="app.deck-list({username: user.username})">{{ user.get.decks_count }} decks</a>
             </span>
           </div>
-        
+
           <!-- Website link -->
-          <div class="list-group-item" ng-if="user.link">
+          <div class="list-group-item" ng-if="user.get.link">
             <span class="text-secondary">
               <i class="fas fa-fw o-fade fa-link"></i> Link:
             </span>
-            <a ng-href="{{ user.link }}" target="_blank" class="float-right" title="{{ user.link }}">
+            <a ng-href="{{ user.get.link }}" target="_blank" class="float-right" title="{{ user.get.link }}">
               {{ user.username }}'s Link
             </a>
           </div>
@@ -63,15 +81,15 @@
             <span class="text-secondary">
               <i class="fas fa-fw o-fade fa-globe"></i> Nationality:
             </span>
-            <span class="float-right">{{ user.nationality || "Planet" }}</span>
+            <span class="float-right">{{ user.get.nationality || "Planet" }}</span>
           </div>
 
           <!-- Date Joined -->
-          <div class="list-group-item" ng-if="user.joined">
+          <div class="list-group-item" ng-if="user.get.joined">
             <span class="text-secondary">
               <i class="fas fa-fw o-fade fa-calendar-alt"></i> Date Joined:
             </span>
-            <span class="float-right">{{ user.joined | date:'dd MMM yyyy' }}</span>
+            <span class="float-right">{{ user.get.joined | date:'dd MMM yyyy' }}</span>
           </div>
         </div>
       </div>

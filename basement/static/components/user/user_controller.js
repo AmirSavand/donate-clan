@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("UserController", function (API, Activity, Comment, Main, toaster, $scope, $state, $stateParams) {
+app.controller("UserController", function (API, Activity, Account, Auth, Comment, Main, toaster, $scope, $state, $stateParams) {
 
   function constructor() {
 
@@ -29,7 +29,7 @@ app.controller("UserController", function (API, Activity, Comment, Main, toaster
     if (!$scope.user) {
       API.Users.get({ username: $stateParams.username },
         function (data) {
-          $scope.user = data;
+          $scope.user = new Account(data);
         },
         function () {
           $state.go("app.home");
