@@ -8,13 +8,10 @@ from activity.models import Activity, ActivityKind
 @receiver(post_save, sender=Deck)
 def create_user(sender, instance, created, **kwargs):
     if created:
-        arena: str = dict(Deck.DECK_ARENA_CHOICES).get(instance.arena)
-        ave: float = instance.avg_elixir
-
         Activity.objects.create(
             issuer=instance.user.username,
             issued=instance.id,
-            content=f'built a {ave} elixir deck for {arena}',
+            content=f'built a {instance.avg_elixir} elixir deck for {instance.get_arena_display()}',
             kind=ActivityKind.DECK,
         )
 

@@ -24,6 +24,11 @@
         <li class="nav-item" ng-class="{active: state.current.name == 'app.deck-list'}">
           <a class="nav-link" ui-sref="app.deck-list({username: null})">Decks</a>
         </li>
+
+        <!-- Tournaments -->
+        <li class="nav-item" ui-sref-active="active">
+          <a class="nav-link" ui-sref="app.tournament-list({username: null})">Tournaments</a>
+        </li>
       </ul>
       
       <!-- Right -->

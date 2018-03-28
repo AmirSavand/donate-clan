@@ -1,0 +1,48 @@
+<div class="container s-mar-y">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-6">
+      <div class="card">
+
+        <!-- Title -->
+        <h4 class="card-header bg-white py-4">Create Tournament</h4>
+
+        <!-- Tournament Form -->
+        <form ng-submit="create(form.data)" class="card-body">
+
+          <!-- Name -->
+          <label class="text-secondary">Name:</label>
+          <div class="form-group">
+            <input type="text" class="form-control form-control-lg" ng-model="form.data.name" required>
+          </div>
+
+          <!-- Prize -->
+          <div class="form-group">
+            <label class="text-secondary">Prize:</label>
+            <input type="number" class="form-control form-control-lg"
+              ng-model="form.data.prize" min="10" max="1000" step="10" required>
+          </div>
+
+          <!-- Participants (label) -->
+          <div class="text-secondary">
+            <label>Participants:</label>
+            <p><i class="fas fa-info-circle"></i> You can only add users who you follow</p>
+          </div>
+
+          <!-- Participants (list) -->
+          <button class="btn btn-sm mr-1 mb-1" type="button"
+            ng-class="{'btn-success': user.add, 'btn-secondary': !user.add}"
+            ng-repeat="user in participants" ng-click="user.add = !user.add">{{ user.username }}
+          </button>
+
+          <!-- Line -->
+          <hr class="my-4">
+          
+          <!-- Submit -->
+          <button class="btn btn-primary btn-lg btn-block" ng-disabled="form.$invalid || form.loading">
+            <i class="fas fa-check"></i> Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

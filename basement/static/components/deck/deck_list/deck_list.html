@@ -1,17 +1,18 @@
+<!-- Header -->
 <div class="container py-4 mobile-same">
-
-  <!-- Header -->
   <h1 class="text-dark my-2">Deck List</h1>
-
-  <!-- Line -->
   <hr class="mobile-hide mb-0">
 </div>
+
+<!-- Decks -->
 <div class="container">
 
-  <!-- Deck options -->
+  <!-- Filter -->
   <div class="card">
     <div class="card-header bg-dark text-white">
-      Filter
+      <!-- Title -->
+      <span>Filter</span>
+      <!-- Reset button -->
       <button class="btn btn-warning btn-sm float-right" ng-click="resetFilter()">Reset</button>
     </div>
     <div class="card-body">
@@ -66,7 +67,7 @@
       <div class="card my-3">
 
         <!-- Header -->
-        <div class="card-header bg-dark text-white py-3" ng-if="!deck.isDeleted">
+        <div class="card-header bg-dark text-white py-4" ng-if="!deck.isDeleted">
 
           <!-- AEC -->
           <span class="o-fade-soft"><i class="fas fa-tint"></i> {{ deck.getAvgElixir() || 0 }}</span>

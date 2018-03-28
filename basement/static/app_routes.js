@@ -7,10 +7,14 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
 
   /**
    * Get template URL with version
+   *
    * @type {function}
+   * @returns {string}
+   *
+   * @param {string} path
    */
-  function comp(url) {
-    return "static/components/" + url + "?v=" + ENV.VERSION;
+  function comp(path) {
+    return "static/components/" + path + "?v=" + ENV.VERSION;
   }
 
   $stateProvider.state("app", {
@@ -85,6 +89,19 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
     params: {
       deck: null
     }
+  })
+
+  .state("app.tournament-new", {
+    url: "/add-tournament",
+    controller: "TournamentNewController",
+    templateUrl: comp("tournament/tournament_new/tournament_new.html"),
+    auth: true
+  })
+
+  .state("app.tournament-list", {
+    url: "/tournaments",
+    controller: "TournamentListController",
+    templateUrl: comp("tournament/tournament_list/tournament_list.html")
   });
 
   $urlRouterProvider.otherwise("/");

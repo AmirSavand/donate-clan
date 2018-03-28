@@ -150,5 +150,12 @@ app.constant("Main", {
       "User",
       "Deck"
     ]
+  },
+  tournament: {
+    status: [
+      "Ready",
+      "Start",
+      "Close"
+    ]
   }
 });

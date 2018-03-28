@@ -3,8 +3,6 @@
 app.controller("DeckListController", function (API, Main, Pagination, Deck, toaster, $scope, $state, $stateParams) {
 
   /**
-   * APY payload
-   *
    * @type {object}
    */
   var payload = {
