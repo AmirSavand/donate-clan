@@ -279,6 +279,49 @@ card.no-name cover {
 }
 
 
+/* Match */
+
+matches {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+    cursor: default;
+}
+
+stage {
+    width: 200px;
+    display: inline-block;
+}
+
+match {
+    display: block;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+match line {
+    width: 4px;
+    height: 30px;
+    background: #333;
+    display: block;
+    margin: -15px calc(50% - 4px);
+}
+
+match player {
+    display: block;
+    background: #EEE;
+    border: 4px solid #333;
+    margin: 15px 0;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+match player.winner {
+    background: chartreuse;
+}
+
+
 /* Modal */
 
 .modal-content {

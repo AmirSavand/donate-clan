@@ -1,0 +1,71 @@
+<!-- Header -->
+<div class="container py-4 mobile-same">
+
+  <!-- Title -->
+  <h1 class="text-dark my-2 mb-3">
+    Custom Tournaments
+
+    <!-- Buttons -->
+    <span class="float-right mobile-full">
+      <button class="btn btn-light mobile-full" ng-click="showInfo()">Info</button>
+      <button class="btn btn-success mobile-full" ui-sref="app.tournament-new">Create</button>
+    </span>
+  </h1>
+
+  <!-- Line -->
+  <hr class="mobile-hide mb-0">
+</div>
+
+<!-- List -->
+<div class="container py-2">
+
+  <!-- Loading -->
+  <div class="text-center py-5" ng-if="!tournaments.length">
+    <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
+  </div>
+
+  <!-- Tournament -->
+  <div class="row">
+    <div class="col-lg-4" ng-repeat="tournament in tournaments">
+      <div class="card my-3">
+
+        <!-- Header -->
+        <div class="card-header bg-dark text-white py-4" ng-if="!deck.isDeleted">
+          <a ui-sref="app.tournament({id: tournament.id, tournament: tournament})"
+            class="text-white on-dark"> {{ tournament.name }}
+          </a>
+        </div>
+
+        <!-- Tournament Info -->
+        <div class="list-group list-group-flush">
+
+          <!-- Prize -->
+          <li class="list-group-item">
+            <span class="text-secondary"><i class="fas fa-fw fa-trophy"></i> Prize:</span>
+            <span class="float-right"><i class="fas fa-dot-circle text-warning"></i> {{ tournament.prize }}</span>
+          </li>
+
+          <!-- Host -->
+          <li class="list-group-item">
+            <span class="text-secondary"><i class="fas fa-fw fa-user"></i> Host:</span>
+            <a ui-sref="app.user({username: tournament.user.username})" class="float-right">
+              {{ tournament.user.username }}
+            </a>
+          </li>
+
+          <!-- Participants -->
+          <li class="list-group-item">
+            <span class="text-secondary"><i class="fas fa-fw fa-users"></i> Participants:</span>
+            <span class="float-right">{{ tournament.participants.length }}</span>
+          </li>
+
+          <!-- Status -->
+          <li class="list-group-item">
+            <span class="text-secondary"><i class="fas fa-fw fa-flag"></i> Status:</span>
+            <span class="float-right">{{ tournament.getStatus() }}</span>
+          </li>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

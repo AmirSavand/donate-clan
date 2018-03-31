@@ -46,3 +46,7 @@ card name {
 .slots-wrapper {
     min-height: 396px;
 }
+
+.mobile-full {
+    width: 100%;
+}

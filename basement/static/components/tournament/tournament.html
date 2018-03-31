@@ -1,0 +1,79 @@
+<!-- Header -->
+<div class="container py-4 mobile-same">
+  <h1 class="text-dark my-2">{{ tournament.name }}</h1>
+  <hr class="mobile-hide mb-0">
+</div>
+
+<!-- Tournament -->
+<div class="container py-3">
+
+  <div class="row">
+
+    <!-- Info -->
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-header bg-dark text-white py-4">Info</div>
+        <div class="list-group list-group-flush">
+
+          <!-- Prize -->
+          <li class="list-group-item">
+            <span class="text-secondary"><i class="fas fa-fw fa-trophy"></i> Prize:</span>
+            <span class="float-right"><i class="fas fa-dot-circle text-warning"></i> {{ tournament.prize }}</span>
+          </li>
+
+          <!-- Host -->
+          <li class="list-group-item">
+            <span class="text-secondary"><i class="fas fa-fw fa-user"></i> Host:</span>
+            <a ui-sref="app.user({username: tournament.user.username})" class="float-right">
+              {{ tournament.user.username }}
+            </a>
+          </li>
+
+          <!-- Participants -->
+          <li class="list-group-item">
+            <span class="text-secondary"><i class="fas fa-fw fa-users"></i> Participants:</span>
+            <span class="float-right">{{ tournament.participants.length }}</span>
+          </li>
+
+          <!-- Status -->
+          <li class="list-group-item">
+            <span class="text-secondary"><i class="fas fa-fw fa-flag"></i> Status:</span>
+            <span class="float-right">{{ tournament.getStatus() }}</span>
+          </li>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <br><br>
+
+  <!-- Matches -->
+  <matches>
+
+    <stage ng-repeat="stage in stages">
+
+      <h3>Stage {{ stage }}</h3><hr>
+
+      <match ng-repeat="match in tournamentMatches" ng-if="match.stage == stage">
+
+          <player ng-click="match.setWinner(match.player1)"
+            ng-class="{winner: match.player1.id == match.winner.id}">
+            {{ match.player1.username }}
+          </player>
+
+          <line ng-if="match.player2" />
+
+          <player ng-click="match.setWinner(match.player2)"
+            ng-class="{winner: match.player2.id == match.winner.id}"
+            ng-if="match.player2">
+            {{ match.player2.username }}
+          </player>
+
+      </match>
+
+    </stage>
+
+  </matches>
+
+</div>

@@ -2,11 +2,14 @@
 <img ng-src="{{ user.picture }}" class="user-image" width="48px">
 <!-- User name -->
 <a ui-sref="app.user({username: user.username, user: user})">{{ user.username }}</a>
-<!-- Follow -->
-<button class="btn btn-outline-success btn-sm float-right mt-1"
-  ng-click="user.follow.follow()" ng-if="!user.isSameUser() && !user.follow.isFollowed()">Follow
-</button>
-<!-- Unfollow -->
-<button class="btn btn-success btn-sm float-right mt-1"
-  ng-click="user.follow.unfollow()" ng-if="!user.isSameUser() && user.follow.isFollowed()">Unfollow
-</button>
+<!-- Follow button -->
+<span ng-if="!noUserButton && !user.isSameUser()">
+  <!-- Follow -->
+  <button class="btn btn-outline-success btn-sm float-right mt-1"
+    ng-click="user.follow.follow()" ng-if="!user.follow.isFollowed()">Follow
+  </button>
+  <!-- Unfollow -->
+  <button class="btn btn-success btn-sm float-right mt-1"
+    ng-click="user.follow.unfollow()" ng-if="user.follow.isFollowed()">Unfollow
+  </button>
+</span>
