@@ -9,7 +9,7 @@ class UserAdmin(admin.ModelAdmin):
     list_display = (
         'username',
         'email',
-        'is_admin',
+        'coins',
         'is_active'
     )
     list_filter = [

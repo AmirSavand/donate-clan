@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'deck',
     'activity',
     'comment',
+    'tournament',
 ]
 
 MIDDLEWARE = [

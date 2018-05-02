@@ -1,7 +1,6 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import six
 from django.utils.timesince import timesince
@@ -47,6 +46,8 @@ class User(AbstractBaseUser):
     picture = models.IntegerField(default=1)
     link = models.URLField(default=None, null=True, blank=True)
     nationality = models.CharField(max_length=50, default=None, null=True, blank=True)
+
+    coins = models.IntegerField(default=0)
 
     objects = UserManager()
 

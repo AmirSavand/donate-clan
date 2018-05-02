@@ -16,9 +16,10 @@ from api.serializers import (
     CommentSerializer,
     FollowSerializer,
     FollowCreateSerializer,
-)
+    TournamentSerializer, TournamentMatchSerializer)
 from comment.models import Comment
 from deck.models import Deck
+from tournament.models import Tournament, TournamentMatch
 
 
 class StandardPagination(PageNumberPagination):
@@ -98,3 +99,20 @@ class CommentViewSet(viewsets.ModelViewSet):
     pagination_class = StandardPagination
     filter_backends = (DjangoFilterBackend,)
     filter_fields = '__all__'
+
+
+class TournamentViewSet(viewsets.ModelViewSet):
+    queryset = Tournament.objects.all()
+    serializer_class = TournamentSerializer
+    pagination_class = StandardPagination
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = '__all__'
+
+
+class TournamentMatchViewSet(viewsets.ModelViewSet):
+    queryset = TournamentMatch.objects.all()
+    serializer_class = TournamentMatchSerializer
+    pagination_class = StandardPagination
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = '__all__'
+    http_method_names = ('get', 'put',)
