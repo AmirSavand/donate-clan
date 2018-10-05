@@ -1,4 +1,4 @@
-Django==1.11.10
+Django==1.11.15
 Markdown==2.6.8
 djangorestframework==3.6.3
 djangorestframework-jwt==1.10.0
