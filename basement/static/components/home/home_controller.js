@@ -1,6 +1,6 @@
 "use strict";
 
-app.controller("HomeController", function (Main, Account, Member, Activity, Comment, Deck, Card, API, $scope) {
+app.controller("HomeController", function (Main, Account, Activity, Comment, Deck, Card, API, $scope) {
 
   function constructor() {
 
@@ -23,11 +23,6 @@ app.controller("HomeController", function (Main, Account, Member, Activity, Comm
     $scope.users = [];
 
     /**
-     * @type {Array<Member>}
-     */
-    $scope.members = [];
-
-    /**
      * @type {Array<Activity>}
      */
     $scope.activities = [];
@@ -36,13 +31,6 @@ app.controller("HomeController", function (Main, Account, Member, Activity, Comm
      * @type {Array<Comment>}
      */
     $scope.comments = [];
-
-    // Get members
-    API.Clan.get({ keys: "members" }, function (data) {
-      angular.forEach(data.members, function (member) {
-        $scope.members.push(new Member(member));
-      });
-    });
 
     // Get users
     API.Users.get({ limit: 10 }, function (data) {

@@ -16,7 +16,7 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-VERSION = '1.6.6'
+VERSION = '1.6.7'
 
 # Application definition
 
@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'basement',
     'api',
     'account',
-    'crapi',
     'deck',
     'activity',
     'comment',
@@ -107,8 +106,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'basement/static/')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'basement/static'),
+]
 
 # Rest framework
 
@@ -136,10 +140,10 @@ ALLOWED_HOSTS = []
 
 # Base settings with dev as default
 
-PRODUCTION = os.environ.get('PRODUCTION', False)
+PRODUCTION = os.environ.get('DJANGO_PRODUCTION') == 'True'
 ADMIN_URL = os.environ.get('ADMIN_URL', r'^admin/')
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'XXXX')
-DEBUG = os.environ.get('DJANGO_DEBUG', False)
+DEBUG = os.environ.get('DJANGO_DEBUG') != 'False'
 ALLOWED_HOSTS.append(os.environ.get('DJANGO_ALLOWED_HOST', '127.0.0.1'))
 DATABASES = {
     'default': {

@@ -54,15 +54,6 @@ app.config(function (ENV, $stateProvider, $urlRouterProvider) {
     auth: true
   })
 
-  .state("app.member", {
-    url: "/m/:tag",
-    controller: "MemberController",
-    templateUrl: comp("member/member.html"),
-    params: {
-      member: null
-    }
-  })
-
   .state("app.deck-new", {
     url: "/build/:id",
     controller: "DeckNewController",

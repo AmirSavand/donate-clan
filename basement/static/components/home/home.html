@@ -28,26 +28,6 @@
         </div>
       </div>
 
-      <!-- Clan members -->
-      <div class="card my-4">
-        <div class="card-header bg-dark text-white py-4">
-          Clan Members <i class="fas fa-fw o-fade float-right fa-chess"></i>
-        </div>
-        <div class="list-group list-group-flush" ng-if="members.length">
-          <a class="list-group-item"
-            ui-sref="app.member({ tag: member.get.tag, member: member })"
-            ng-if="member.get.role != 'member'"
-            ng-repeat="member in members | orderBy:'-roleRank' | limitTo:10">
-            {{ member.get.name | underspace }}
-            <small class="o-fade float-right">{{ member.get.role | uppercase }}</small>
-          </a>
-        </div>
-        <!-- Loading -->
-        <div class="card-body text-center bg-white py-5" ng-if="!members.length">
-          <i class="fas fa-circle-notch fa-spin fa-5x text-warning"></i>
-        </div>
-      </div>
-
       <!-- Discussion -->
       <div class="card my-4">
         <div class="card-header bg-dark text-white py-4">

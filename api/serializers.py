@@ -42,8 +42,6 @@ class UserSerializer(serializers.ModelSerializer):
             'is_active',
             'is_profile_completed',
             'is_admin',
-            'is_whatsapp',
-            'member',
             'about',
             'avatar',
             'link',
@@ -77,7 +75,6 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         fields = (
             'about',
             'avatar',
-            'member',
             'email',
             'link',
             'nationality',

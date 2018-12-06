@@ -57,16 +57,6 @@
         <!-- Info -->
         <div class="list-group list-group-flush">
 
-          <!-- Membership -->
-          <div class="list-group-item" ng-if="user.get.member">
-            <span class="text-secondary">
-              <i class="fas fa-fw o-fade fa-chess"></i> Membership:
-            </span>
-            <a ui-sref="app.member({tag: user.get.member})" class="float-right">
-              #{{ user.get.member }}
-            </a>
-          </div>
-
           <!-- Decks count -->
           <div class="list-group-item" ng-if="user.get.joined">
             <span class="text-secondary">

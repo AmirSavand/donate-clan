@@ -15,7 +15,6 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = [
         'joined',
         'is_admin',
-        'is_whatsapp',
     ]
     search_fields = [
         'username',

@@ -1,7 +1,6 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import six
 from django.utils.timesince import timesince
@@ -36,12 +35,10 @@ class User(AbstractBaseUser):
 
     joined = models.DateTimeField(auto_now=True)
     email = models.EmailField(max_length=254, unique=True)
-    member = models.CharField(max_length=50, default=None, null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
-    is_whatsapp = models.BooleanField(default=False)
 
     about = models.CharField(max_length=500, default=None, null=True, blank=True)
     avatar = models.IntegerField(default=1)

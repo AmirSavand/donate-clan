@@ -6,7 +6,6 @@ from royale_plus.settings import ADMIN_URL
 
 urlpatterns = (
     url(ADMIN_URL, admin.site.urls),
-    url(r'^crapi/', include('crapi.urls')),
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^', include('basement.urls')),

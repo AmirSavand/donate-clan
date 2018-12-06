@@ -4,12 +4,6 @@
  * Main constant
  */
 app.constant("Main", {
-  roles: [
-    "member",
-    "elder",
-    "coleader",
-    "leader",
-  ],
   sorts: {
     rarity: {
       common: 0,

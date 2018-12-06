@@ -20,7 +20,6 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
       $scope.form.data = {
         email: data.email,
         about: data.about,
-        member: data.member,
         link: data.link,
         nationality: data.nationality,
         avatar: data.avatar,
@@ -44,11 +43,6 @@ app.controller("SettingsController", function (Auth, API, Account, toaster, $sco
 
   $scope.update = function (form) {
     form.loading = true;
-
-    // Remove hash from player tag
-    if (form.data.member && form.data.member.indexOf("#") !== -1) {
-      form.data.member = form.data.member.replace("#", "");
-    }
 
     API.Settings.put({}, form.data,
       function (data) {

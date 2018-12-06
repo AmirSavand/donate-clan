@@ -1,6 +1,6 @@
 "use strict";
 
-app.service("Auth", function (Member, API, toaster, $rootScope, $state) {
+app.service("Auth", function (API, toaster, $rootScope) {
 
   /**
    * @private
